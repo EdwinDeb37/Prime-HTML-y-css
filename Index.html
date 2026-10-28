@@ -4,27 +4,991 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Mi primer proyecto</title>
+    <title>PRIME | Vive el deporte</title>
 
+    <meta
+        name="description"
+        content="PRIME conecta deportistas con entrenadores y espacios deportivos para impulsar su rendimiento."
+    >
+
+    <!-- Tipografías -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Iconos -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <!-- CSS: conserva exactamente este nombre -->
     <link rel="stylesheet" href="Css.css">
+
+    <!-- JavaScript: conserva exactamente este nombre -->
+    <script src="Script.js" defer></script>
 </head>
 
 <body>
 
-    <header>
-        <h1>Mi primera página web</h1>
-        <p>Estoy aprendiendo HTML y CSS</p>
+    <!-- BARRA DE NAVEGACIÓN -->
+    <header class="header">
+        <nav class="navbar container">
+
+            <a href="#inicio" class="logo" aria-label="PRIME, inicio">
+                <span class="logo-icon">
+                    <i class="fa-solid fa-bolt"></i>
+                </span>
+                <span>PRIME<span class="logo-dot">.</span></span>
+            </a>
+
+            <button
+                class="menu-toggle"
+                id="menu-toggle"
+                aria-label="Abrir menú"
+                aria-expanded="false"
+                aria-controls="nav-menu"
+            >
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#inicio" class="nav-link active">Inicio</a></li>
+                <li><a href="#canchas" class="nav-link">Canchas</a></li>
+                <li><a href="#entrenadores" class="nav-link">Entrenadores</a></li>
+                <li><a href="#comunidad" class="nav-link">Comunidad</a></li>
+                <li><a href="#blog" class="nav-link">Blog</a></li>
+                <li><a href="#contacto" class="nav-link">Contacto</a></li>
+                <li>
+                    <a href="#contacto" class="btn btn-primary nav-cta">
+                        Únete a PRIME
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </li>
+            </ul>
+
+        </nav>
     </header>
 
+
     <main>
-        <h2>Bienvenido</h2>
 
-        <p>
-            Esta página fue creada utilizando HTML y CSS.
-        </p>
+        <!-- INICIO / HERO -->
+        <section class="hero" id="inicio">
 
-        <button>Hola</button>
+            <div class="hero-overlay"></div>
+
+            <div class="container hero-content reveal">
+
+                <span class="eyebrow hero-eyebrow">
+                    <span class="eyebrow-line"></span>
+                    TU SIGUIENTE NIVEL COMIENZA AQUÍ
+                </span>
+
+                <h1>
+                    SUPERA TUS<br>
+                    <span>LÍMITES.</span>
+                </h1>
+
+                <p class="hero-description">
+                    Encuentra canchas, conecta con entrenadores y forma parte
+                    de una comunidad que vive el deporte con pasión.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#canchas" class="btn btn-primary">
+                        Explorar canchas
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                    <a href="#entrenadores" class="btn btn-outline">
+                        Encuentra tu entrenador
+                    </a>
+                </div>
+
+                <div class="hero-stats">
+
+                    <div class="hero-stat">
+                        <strong>01</strong>
+                        <span>Encuentra</span>
+                    </div>
+
+                    <div class="hero-stat">
+                        <strong>02</strong>
+                        <span>Entrena</span>
+                    </div>
+
+                    <div class="hero-stat">
+                        <strong>03</strong>
+                        <span>Supérate</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <a href="#propuesta" class="scroll-indicator" aria-label="Desplazarse hacia abajo">
+                <i class="fa-solid fa-arrow-down"></i>
+            </a>
+
+        </section>
+
+
+        <!-- PROPUESTA DE VALOR -->
+        <section class="section intro-section" id="propuesta">
+
+            <div class="container intro-grid">
+
+                <div class="intro-text reveal">
+
+                    <span class="section-label">MÁS QUE DEPORTE</span>
+
+                    <h2>
+                        TU PASIÓN.<br>
+                        TU ESFUERZO.<br>
+                        <span>TU PRIME.</span>
+                    </h2>
+
+                    <p>
+                        Sabemos que mejorar requiere disciplina, oportunidades
+                        y el lugar adecuado. PRIME reúne herramientas para que
+                        encuentres espacios deportivos, conozcas entrenadores
+                        y conectes con personas que comparten tus objetivos.
+                    </p>
+
+                    <a href="#servicios" class="text-link">
+                        Descubre PRIME
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+                <div class="intro-image reveal">
+                    <img
+                        src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1100&q=85"
+                        alt="Atleta entrenando en una pista deportiva"
+                        loading="lazy"
+                    >
+
+                    <div class="image-badge">
+                        <i class="fa-solid fa-bolt"></i>
+                        <div>
+                            <strong>Activa tu potencial</strong>
+                            <span>El siguiente nivel depende de ti.</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SERVICIOS -->
+        <section class="section services-section" id="servicios">
+
+            <div class="container">
+
+                <div class="section-heading reveal">
+                    <span class="section-label">TODO EN UN SOLO LUGAR</span>
+                    <h2>EL DEPORTE, <span>SIN LÍMITES.</span></h2>
+                    <p>
+                        Las herramientas que necesitas para entrenar,
+                        mejorar y disfrutar de tu deporte favorito.
+                    </p>
+                </div>
+
+                <div class="services-grid">
+
+                    <article class="service-card reveal">
+                        <div class="service-icon">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+
+                        <h3>Encuentra canchas</h3>
+
+                        <p>
+                            Explora espacios deportivos y descubre opciones
+                            para practicar tu deporte favorito.
+                        </p>
+
+                        <a href="#canchas" class="text-link">
+                            Explorar espacios
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </article>
+
+                    <article class="service-card reveal">
+                        <div class="service-icon">
+                            <i class="fa-solid fa-person-running"></i>
+                        </div>
+
+                        <h3>Conecta con entrenadores</h3>
+
+                        <p>
+                            Conoce profesionales que pueden ayudarte a
+                            desarrollar tus habilidades deportivas.
+                        </p>
+
+                        <a href="#entrenadores" class="text-link">
+                            Ver entrenadores
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </article>
+
+                    <article class="service-card reveal">
+                        <div class="service-icon">
+                            <i class="fa-solid fa-people-group"></i>
+                        </div>
+
+                        <h3>Únete a la comunidad</h3>
+
+                        <p>
+                            Comparte tu pasión, conoce a otros deportistas
+                            y encuentra nuevas oportunidades.
+                        </p>
+
+                        <a href="#comunidad" class="text-link">
+                            Conoce la comunidad
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CANCHAS -->
+        <section class="section courts-section" id="canchas">
+
+            <div class="container">
+
+                <div class="section-heading courts-heading reveal">
+
+                    <div>
+                        <span class="section-label">ENCUENTRA TU ESPACIO</span>
+                        <h2>ELIGE DÓNDE <span>JUGAR.</span></h2>
+                        <p>
+                            Busca espacios deportivos según el deporte que practicas.
+                        </p>
+                    </div>
+
+                    <div class="courts-heading-icon">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                    </div>
+
+                </div>
+
+
+                <!-- Buscador -->
+                <div class="court-search reveal">
+
+                    <div class="search-input-wrapper">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                        <input
+                            type="search"
+                            id="court-search-input"
+                            placeholder="Busca por nombre o deporte..."
+                            aria-label="Buscar canchas"
+                        >
+                    </div>
+
+                    <div class="search-select-wrapper">
+                        <i class="fa-solid fa-futbol"></i>
+
+                        <select id="sport-filter" aria-label="Filtrar por deporte">
+                            <option value="todos">Todos los deportes</option>
+                            <option value="futbol">Fútbol</option>
+                            <option value="baloncesto">Baloncesto</option>
+                            <option value="tenis">Tenis</option>
+                            <option value="voleibol">Voleibol</option>
+                        </select>
+                    </div>
+
+                    <button type="button" class="btn btn-primary" id="search-courts-btn">
+                        Buscar
+                    </button>
+
+                </div>
+
+
+                <!-- Tarjetas de canchas -->
+                <div class="courts-grid" id="courts-grid">
+
+                    <article
+                        class="court-card reveal"
+                        data-sport="futbol"
+                        data-search="cancha de fútbol fútbol futbol"
+                    >
+
+                        <div class="court-image">
+                            <img
+                                src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=900&q=85"
+                                alt="Campo de fútbol"
+                                loading="lazy"
+                            >
+
+                            <span class="sport-tag">FÚTBOL</span>
+                        </div>
+
+                        <div class="court-content">
+
+                            <div class="court-title-row">
+                                <h3>Cancha de fútbol</h3>
+                                <i class="fa-solid fa-futbol"></i>
+                            </div>
+
+                            <p class="court-location">
+                                <i class="fa-solid fa-location-dot"></i>
+                                Ubicación por confirmar
+                            </p>
+
+                            <p class="court-description">
+                                Un espacio para entrenar, jugar y compartir
+                                con tu equipo.
+                            </p>
+
+                            <button
+                                class="court-button"
+                                type="button"
+                                data-court="Cancha de fútbol"
+                            >
+                                Ver información
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+
+                        </div>
+
+                    </article>
+
+
+                    <article
+                        class="court-card reveal"
+                        data-sport="baloncesto"
+                        data-search="cancha de baloncesto basketball básquet"
+                    >
+
+                        <div class="court-image">
+                            <img
+                                src="https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=900&q=85"
+                                alt="Cancha de baloncesto"
+                                loading="lazy"
+                            >
+
+                            <span class="sport-tag">BALONCESTO</span>
+                        </div>
+
+                        <div class="court-content">
+
+                            <div class="court-title-row">
+                                <h3>Cancha de baloncesto</h3>
+                                <i class="fa-solid fa-basketball"></i>
+                            </div>
+
+                            <p class="court-location">
+                                <i class="fa-solid fa-location-dot"></i>
+                                Ubicación por confirmar
+                            </p>
+
+                            <p class="court-description">
+                                Practica tus lanzamientos, trabaja en equipo
+                                y mejora tu técnica.
+                            </p>
+
+                            <button
+                                class="court-button"
+                                type="button"
+                                data-court="Cancha de baloncesto"
+                            >
+                                Ver información
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+
+                        </div>
+
+                    </article>
+
+
+                    <article
+                        class="court-card reveal"
+                        data-sport="tenis"
+                        data-search="cancha de tenis tennis"
+                    >
+
+                        <div class="court-image">
+                            <img
+                                src="https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?auto=format&fit=crop&w=900&q=85"
+                                alt="Cancha de tenis"
+                                loading="lazy"
+                            >
+
+                            <span class="sport-tag">TENIS</span>
+                        </div>
+
+                        <div class="court-content">
+
+                            <div class="court-title-row">
+                                <h3>Cancha de tenis</h3>
+                                <i class="fa-solid fa-table-tennis-paddle-ball"></i>
+                            </div>
+
+                            <p class="court-location">
+                                <i class="fa-solid fa-location-dot"></i>
+                                Ubicación por confirmar
+                            </p>
+
+                            <p class="court-description">
+                                Perfecciona tu técnica, precisión y estrategia
+                                en cada partido.
+                            </p>
+
+                            <button
+                                class="court-button"
+                                type="button"
+                                data-court="Cancha de tenis"
+                            >
+                                Ver información
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+
+                        </div>
+
+                    </article>
+
+
+                    <article
+                        class="court-card reveal"
+                        data-sport="voleibol"
+                        data-search="cancha de voleibol volleyball voley"
+                    >
+
+                        <div class="court-image">
+                            <img
+                                src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?auto=format&fit=crop&w=900&q=85"
+                                alt="Partido de voleibol"
+                                loading="lazy"
+                            >
+
+                            <span class="sport-tag">VOLEIBOL</span>
+                        </div>
+
+                        <div class="court-content">
+
+                            <div class="court-title-row">
+                                <h3>Cancha de voleibol</h3>
+                                <i class="fa-solid fa-volleyball"></i>
+                            </div>
+
+                            <p class="court-location">
+                                <i class="fa-solid fa-location-dot"></i>
+                                Ubicación por confirmar
+                            </p>
+
+                            <p class="court-description">
+                                Entrena tus saques, bloqueos y coordinación
+                                junto a tu equipo.
+                            </p>
+
+                            <button
+                                class="court-button"
+                                type="button"
+                                data-court="Cancha de voleibol"
+                            >
+                                Ver información
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+                <p class="empty-results" id="empty-results" hidden>
+                    No encontramos resultados. Intenta con otro nombre o deporte.
+                </p>
+
+                <p class="section-note">
+                    <i class="fa-solid fa-circle-info"></i>
+                    Las canchas mostradas son ejemplos de diseño. Sus ubicaciones
+                    y disponibilidad deben verificarse antes de publicar la web.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ENTRENADORES -->
+        <section class="section coaches-section" id="entrenadores">
+
+            <div class="container coaches-grid">
+
+                <div class="coaches-image reveal">
+                    <img
+                        src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1100&q=85"
+                        alt="Espacio de entrenamiento deportivo"
+                        loading="lazy"
+                    >
+
+                    <div class="coaches-image-label">
+                        <i class="fa-solid fa-trophy"></i>
+                        <span>Entrena con propósito.</span>
+                    </div>
+                </div>
+
+
+                <div class="coaches-content reveal">
+
+                    <span class="section-label">MEJORA TU RENDIMIENTO</span>
+
+                    <h2>
+                        NO ENTRENES<br>
+                        SOLO PARA<br>
+                        <span>PARTICIPAR.</span>
+                    </h2>
+
+                    <p>
+                        Entrena para avanzar. Encuentra profesionales que
+                        te ayuden a mejorar tu técnica, fortalecer tus
+                        habilidades y establecer nuevas metas.
+                    </p>
+
+                    <ul class="benefits-list">
+
+                        <li>
+                            <span class="benefit-check">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            Conecta con entrenadores deportivos.
+                        </li>
+
+                        <li>
+                            <span class="benefit-check">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            Descubre nuevas formas de entrenar.
+                        </li>
+
+                        <li>
+                            <span class="benefit-check">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            Trabaja para alcanzar tus objetivos.
+                        </li>
+
+                    </ul>
+
+                    <a href="#contacto" class="btn btn-primary">
+                        Quiero entrenar
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- COMUNIDAD -->
+        <section class="section community-section" id="comunidad">
+
+            <div class="container">
+
+                <div class="community-content reveal">
+
+                    <span class="section-label">EL DEPORTE NOS UNE</span>
+
+                    <h2>
+                        JUNTOS SOMOS<br>
+                        <span>PRIME.</span>
+                    </h2>
+
+                    <p>
+                        El deporte va más allá de competir. Es aprender,
+                        colaborar, conocer personas y crecer con cada reto.
+                        Forma parte de una comunidad que comparte tu pasión.
+                    </p>
+
+                    <a href="#contacto" class="btn btn-light">
+                        Forma parte de la comunidad
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- BLOG -->
+        <section class="section blog-section" id="blog">
+
+            <div class="container">
+
+                <div class="section-heading reveal">
+                    <span class="section-label">IDEAS PARA SEGUIR AVANZANDO</span>
+                    <h2>MENTALIDAD DE <span>CAMPEÓN.</span></h2>
+                    <p>
+                        Consejos e ideas para desarrollar una mentalidad
+                        deportiva y mantener la motivación.
+                    </p>
+                </div>
+
+
+                <div class="blog-grid">
+
+                    <article class="blog-card reveal">
+
+                        <div class="blog-image">
+                            <img
+                                src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=900&q=85"
+                                alt="Persona entrenando"
+                                loading="lazy"
+                            >
+                        </div>
+
+                        <div class="blog-content">
+
+                            <span class="blog-category">ENTRENAMIENTO</span>
+
+                            <h3>La constancia supera a la motivación</h3>
+
+                            <p>
+                                Descubre por qué mantener buenos hábitos puede
+                                ayudarte a progresar en tu disciplina.
+                            </p>
+
+                            <a href="#contacto" class="text-link">
+                                Próximamente
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="blog-card reveal">
+
+                        <div class="blog-image">
+                            <img
+                                src="https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=900&q=85"
+                                alt="Deportistas practicando fútbol"
+                                loading="lazy"
+                            >
+                        </div>
+
+                        <div class="blog-content">
+
+                            <span class="blog-category">TRABAJO EN EQUIPO</span>
+
+                            <h3>Crecer también significa colaborar</h3>
+
+                            <p>
+                                Aprende cómo la comunicación y la confianza
+                                pueden fortalecer a un equipo.
+                            </p>
+
+                            <a href="#contacto" class="text-link">
+                                Próximamente
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="blog-card reveal">
+
+                        <div class="blog-image">
+                            <img
+                                src="https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=900&q=85"
+                                alt="Deportista entrenando en una piscina"
+                                loading="lazy"
+                            >
+                        </div>
+
+                        <div class="blog-content">
+
+                            <span class="blog-category">MENTALIDAD</span>
+
+                            <h3>Cómo aprender de cada desafío</h3>
+
+                            <p>
+                                Convierte cada entrenamiento en una oportunidad
+                                para aprender y seguir avanzando.
+                            </p>
+
+                            <a href="#contacto" class="text-link">
+                                Próximamente
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTACTO -->
+        <section class="section contact-section" id="contacto">
+
+            <div class="container contact-grid">
+
+                <div class="contact-info reveal">
+
+                    <span class="section-label">HABLEMOS DE DEPORTE</span>
+
+                    <h2>
+                        EL SIGUIENTE<br>
+                        PASO ES <span>TUYO.</span>
+                    </h2>
+
+                    <p>
+                        ¿Quieres entrenar, colaborar con PRIME o proponer
+                        un espacio deportivo? Escríbenos.
+                    </p>
+
+                    <div class="contact-detail">
+                        <span class="contact-detail-icon">
+                            <i class="fa-solid fa-bolt"></i>
+                        </span>
+
+                        <div>
+                            <strong>PRIME</strong>
+                            <span>Conectando personas a través del deporte.</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-detail">
+                        <span class="contact-detail-icon">
+                            <i class="fa-solid fa-envelope"></i>
+                        </span>
+
+                        <div>
+                            <strong>Contacto</strong>
+                            <span>Completa el formulario para comunicarte con nosotros.</span>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <form class="contact-form reveal" id="contact-form">
+
+                    <h3>Envíanos un mensaje</h3>
+
+                    <p class="form-description">
+                        Completa los campos y cuéntanos cómo podemos ayudarte.
+                    </p>
+
+                    <div class="form-group">
+                        <label for="name">Nombre completo</label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Escribe tu nombre"
+                            required
+                            minlength="2"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Correo electrónico</label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="ejemplo@correo.com"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="interest">¿Qué te interesa?</label>
+
+                        <select id="interest" name="interest" required>
+                            <option value="">Selecciona una opción</option>
+                            <option value="deportista">Soy deportista</option>
+                            <option value="entrenador">Soy entrenador</option>
+                            <option value="cancha">Tengo una cancha</option>
+                            <option value="colaboracion">Quiero colaborar</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Mensaje</label>
+
+                        <textarea
+                            id="message"
+                            name="message"
+                            rows="4"
+                            placeholder="Cuéntanos un poco más..."
+                            required
+                            minlength="5"
+                        ></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary form-submit">
+                        Enviar mensaje
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+
+                    <p class="form-note">
+                        Este formulario es una demostración y todavía no envía
+                        mensajes a un correo electrónico.
+                    </p>
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+        <!-- LLAMADA FINAL -->
+        <section class="final-cta">
+
+            <div class="container final-cta-content reveal">
+
+                <div>
+                    <span class="section-label">ES TU MOMENTO</span>
+                    <h2>ACTIVA TU <span>PRIME.</span></h2>
+                </div>
+
+                <a href="#canchas" class="btn btn-dark">
+                    Comenzar ahora
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+        </section>
+
     </main>
+
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="footer">
+
+        <div class="container footer-main">
+
+            <div class="footer-brand">
+
+                <a href="#inicio" class="logo footer-logo">
+                    <span class="logo-icon">
+                        <i class="fa-solid fa-bolt"></i>
+                    </span>
+                    <span>PRIME<span class="logo-dot">.</span></span>
+                </a>
+
+                <p>
+                    Una nueva forma de conectar con el deporte,
+                    encontrar oportunidades y seguir creciendo.
+                </p>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>Explora</h3>
+
+                <a href="#inicio">Inicio</a>
+                <a href="#canchas">Canchas</a>
+                <a href="#entrenadores">Entrenadores</a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>Comunidad</h3>
+
+                <a href="#comunidad">Nuestra comunidad</a>
+                <a href="#blog">Blog</a>
+                <a href="#contacto">Contacto</a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>Síguenos</h3>
+
+                <div class="social-links">
+
+                    <a href="#contacto" aria-label="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+
+                    <a href="#contacto" aria-label="TikTok">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+
+                    <a href="#contacto" aria-label="Facebook">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+
+                </div>
+
+                <p class="social-note">
+                    Los enlaces de redes sociales son provisionales.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="container footer-bottom">
+
+            <p>
+                &copy; <span id="current-year"></span> PRIME.
+                Todos los derechos reservados.
+            </p>
+
+            <a href="#inicio" class="back-to-top">
+                Volver arriba
+                <i class="fa-solid fa-arrow-up"></i>
+            </a>
+
+        </div>
+
+    </footer>
+
+
+    <!-- MENSAJES EMERGENTES -->
+    <div
+        class="toast"
+        id="toast"
+        role="status"
+        aria-live="polite"
+    >
+        <i class="fa-solid fa-circle-check"></i>
+        <span id="toast-message">Mensaje</span>
+    </div>
 
 </body>
 </html>
