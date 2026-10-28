@@ -1,529 +1,79 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#101010">
-    <meta name="description" content="PRIME conecta deportistas con canchas, entrenadores y una comunidad deportiva.">
-    <title>PRIME — Tu próximo nivel</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ff6a00">
+  <meta name="description" content="PRIME conecta deportistas con canchas, entrenadores y una comunidad deportiva.">
+  <title>PRIME — Tu deporte, tu comunidad</title>
 
-    <!-- Tipografías originales de PRIME -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <!-- Iconos -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-    <!-- Mapa -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-
-    <link rel="stylesheet" href="Css.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="Css.css">
 </head>
-
 <body>
-    <!-- ENCABEZADO -->
-    <header class="header">
-        <div class="container header-inner">
-            <!-- Logo PRIME con el rayo original -->
-            <a href="#inicio" class="logo" aria-label="PRIME, inicio">
-                <span class="logo-icon"><i class="fa-solid fa-bolt"></i></span>
-                <span>PRIME<span class="logo-dot">.</span></span>
-            </a>
+  <a class="skip-link" href="#app-main">Saltar al contenido</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#inicio" aria-label="PRIME, inicio">PRIME<span>.</span></a>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+      <nav class="nav-menu" id="nav-menu" aria-label="Navegación principal">
+        <a class="nav-link" href="#inicio" data-i18n="navHome">Inicio</a>
+        <a class="nav-link" href="#canchas" data-i18n="navCourts">Canchas</a>
+        <a class="nav-link" href="#mapa" data-i18n="navMap">Mapa</a>
+        <a class="nav-link" href="#entrenadores" data-i18n="navCoaches">Entrenadores</a>
+        <a class="nav-link" href="#comunidad" data-i18n="navCommunity">Comunidad</a>
+        <a class="nav-link" href="#blog" data-i18n="navBlog">Blog</a>
+        <a class="nav-link" href="#contacto" data-i18n="navContact">Contacto</a>
+      </nav>
+      <div class="header-tools">
+        <label class="sr-only" for="language-select">Language / Idioma</label>
+        <select id="language-select" class="language-select" aria-label="Seleccionar idioma">
+          <option value="es">ES</option><option value="en">EN</option><option value="fr">FR</option><option value="pt">PT</option>
+        </select>
+        <button class="icon-button" id="theme-toggle" type="button" aria-label="Cambiar tema" title="Cambiar tema"><i class="fa-solid fa-sun"></i></button>
+        <a class="account-link" id="account-link" href="#acceso" data-i18n="account">Mi cuenta</a>
+      </div>
+    </div>
+  </header>
 
-            <button class="menu-toggle" id="menu-toggle"
-                    aria-label="Abrir menú" aria-expanded="false">
-                <i class="fa-solid fa-bars"></i>
-            </button>
+  <main id="app-main">
+    <div id="page-content"></div>
+  </main>
 
-            <nav class="nav-menu" id="nav-menu">
-                <a class="nav-link active" href="#inicio" data-i18n="navHome">Inicio</a>
-                <a class="nav-link" href="#canchas" data-i18n="navCourts">Canchas</a>
-                <a class="nav-link" href="#mapa" data-i18n="navMap">Mapa</a>
-                <a class="nav-link" href="#entrenadores" data-i18n="navCoaches">Entrenadores</a>
-                <a class="nav-link" href="#comunidad" data-i18n="navCommunity">Comunidad</a>
-                <a class="nav-link" href="#blog" data-i18n="navBlog">Blog</a>
-                <a class="nav-link" href="#contacto" data-i18n="navContact">Contacto</a>
-            </nav>
+  <footer class="site-footer">
+    <div class="footer-main wrap">
+      <div class="footer-brand">
+        <a class="brand brand-footer" href="#inicio">PRIME<span>.</span></a>
+        <p data-i18n="footerText">Conectamos deportistas con espacios, entrenadores y oportunidades.</p>
+      </div>
+      <div>
+        <h3 data-i18n="footerExplore">Explorar</h3>
+        <a href="#canchas" data-i18n="navCourts">Canchas</a>
+        <a href="#entrenadores" data-i18n="navCoaches">Entrenadores</a>
+        <a href="#comunidad" data-i18n="navCommunity">Comunidad</a>
+      </div>
+      <div>
+        <h3 data-i18n="footerHelp">Ayuda</h3>
+        <a href="#contacto" data-i18n="navContact">Contacto</a>
+        <a href="#acceso" data-i18n="account">Mi cuenta</a>
+        <a href="#blog" data-i18n="navBlog">Blog</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="current-year"></span> PRIME. <span data-i18n="rights">Todos los derechos reservados.</span></span>
+      <a href="#inicio" data-i18n="backTop">Volver arriba ↑</a>
+    </div>
+  </footer>
 
-            <div class="header-actions">
-                <label class="sr-only" for="language-select">Idioma</label>
-                <select id="language-select" class="language-select"
-                        aria-label="Seleccionar idioma">
-                    <option value="es">ES · Español</option>
-                    <option value="en">EN · English</option>
-                    <option value="fr">FR · Français</option>
-                    <option value="pt">PT · Português</option>
-                </select>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-                <button class="theme-toggle" id="theme-toggle" type="button"
-                        aria-label="Cambiar tema" title="Cambiar tema">
-                    <i class="fa-solid fa-sun"></i>
-                </button>
-
-                <a class="btn btn-primary account-link" id="account-link"
-                   href="#acceso" data-i18n="account">Mi cuenta</a>
-            </div>
-        </div>
-    </header>
-
-    <main>
-        <!-- INICIO -->
-        <section class="hero" id="inicio">
-            <div class="hero-grid"></div>
-            <div class="container hero-layout">
-                <div class="hero-content">
-                    <span class="eyebrow" data-i18n="heroEyebrow">
-                        TU DEPORTE. TU COMUNIDAD. TU NIVEL.
-                    </span>
-
-                    <h1 data-i18n="heroTitle">
-                        LLEVA TU JUEGO<br>
-                        <span class="highlight">AL SIGUIENTE NIVEL.</span>
-                    </h1>
-
-                    <p data-i18n="heroText">
-                        Encuentra canchas, conecta con entrenadores y forma
-                        parte de una comunidad que vive el deporte.
-                    </p>
-
-                    <div class="hero-buttons">
-                        <a href="#canchas" class="btn btn-primary">
-                            <span data-i18n="findCourt">Encuentra una cancha</span>
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                        <a href="#entrenadores" class="btn btn-outline-light"
-                           data-i18n="findCoach">Conoce a los entrenadores</a>
-                    </div>
-
-                    <div class="hero-stats">
-                        <div>
-                            <strong>01</strong>
-                            <span data-i18n="statOne">Encuentra</span>
-                        </div>
-                        <div>
-                            <strong>02</strong>
-                            <span data-i18n="statTwo">Entrena</span>
-                        </div>
-                        <div>
-                            <strong>03</strong>
-                            <span data-i18n="statThree">Supérate</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="hero-visual" aria-label="Deporte y entrenamiento">
-                    <div class="hero-orange-block"></div>
-                    <div class="hero-ball">
-                        <i class="fa-solid fa-basketball"></i>
-                    </div>
-                    <div class="hero-vertical-text">PLAY YOUR GAME</div>
-                    <div class="hero-badge">
-                        <i class="fa-solid fa-bolt"></i>
-                        <span>YOUR NEXT LEVEL</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- BENEFICIOS -->
-        <section class="section section-light" id="beneficios">
-            <div class="container">
-                <div class="section-heading">
-                    <span class="eyebrow" data-i18n="benefitsEyebrow">HECHO PARA DEPORTISTAS</span>
-                    <h2 data-i18n="benefitsTitle">TODO LO QUE NECESITAS<br>PARA AVANZAR</h2>
-                    <p data-i18n="benefitsText">
-                        Encuentra espacios para jugar, personas que te ayuden
-                        a mejorar y una comunidad que te motive.
-                    </p>
-                </div>
-
-                <div class="feature-grid">
-                    <article class="feature-card">
-                        <div class="feature-icon"><i class="fa-solid fa-location-dot"></i></div>
-                        <h3 data-i18n="featureCourtTitle">Canchas cerca de ti</h3>
-                        <p data-i18n="featureCourtText">
-                            Descubre espacios deportivos y consulta su ubicación.
-                        </p>
-                        <a href="#mapa" class="text-link">
-                            <span data-i18n="exploreMap">Explorar mapa</span>
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                    </article>
-
-                    <article class="feature-card">
-                        <div class="feature-icon"><i class="fa-solid fa-person-running"></i></div>
-                        <h3 data-i18n="featureCoachTitle">Entrenadores</h3>
-                        <p data-i18n="featureCoachText">
-                            Encuentra profesionales para desarrollar tus habilidades.
-                        </p>
-                        <a href="#entrenadores" class="text-link">
-                            <span data-i18n="meetCoaches">Ver entrenadores</span>
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                    </article>
-
-                    <article class="feature-card">
-                        <div class="feature-icon"><i class="fa-solid fa-people-group"></i></div>
-                        <h3 data-i18n="featureCommunityTitle">Comunidad deportiva</h3>
-                        <p data-i18n="featureCommunityText">
-                            Comparte experiencias, ideas y objetivos deportivos.
-                        </p>
-                        <a href="#comunidad" class="text-link">
-                            <span data-i18n="joinCommunity">Conocer comunidad</span>
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- CANCHAS -->
-        <section class="section" id="canchas">
-            <div class="container">
-                <div class="section-heading heading-row">
-                    <div>
-                        <span class="eyebrow" data-i18n="courtsEyebrow">ENCUENTRA TU ESPACIO</span>
-                        <h2 data-i18n="courtsTitle">CANCHAS DESTACADAS</h2>
-                        <p data-i18n="courtsText">
-                            Explora algunas ubicaciones de ejemplo en Panamá.
-                        </p>
-                    </div>
-                    <a href="#mapa" class="btn btn-dark">
-                        <span data-i18n="seeMap">Ver mapa</span>
-                        <i class="fa-solid fa-map-location-dot"></i>
-                    </a>
-                </div>
-
-                <div class="filter-bar">
-                    <label for="court-search" class="sr-only" data-i18n="searchLabel">Buscar</label>
-                    <div class="search-box">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                        <input id="court-search" type="search"
-                               data-i18n-placeholder="courtSearchPlaceholder"
-                               placeholder="Buscar cancha o ubicación">
-                    </div>
-
-                    <label for="sport-filter" class="sr-only" data-i18n="sportLabel">Deporte</label>
-                    <select id="sport-filter">
-                        <option value="all" data-i18n="allSports">Todos los deportes</option>
-                        <option value="basketball" data-i18n="basketball">Baloncesto</option>
-                        <option value="football" data-i18n="football">Fútbol</option>
-                        <option value="tennis" data-i18n="tennis">Tenis</option>
-                        <option value="volleyball" data-i18n="volleyball">Voleibol</option>
-                    </select>
-                </div>
-
-                <div class="court-grid" id="court-grid">
-                    <!-- Generado por Script.js -->
-                </div>
-                <p class="demo-note" data-i18n="demoNote">
-                    Nota: estas canchas son ejemplos de demostración.
-                    Verifica la disponibilidad directamente con el recinto.
-                </p>
-            </div>
-        </section>
-
-        <!-- MAPA -->
-        <section class="section section-dark" id="mapa">
-            <div class="container map-layout">
-                <div class="map-copy">
-                    <span class="eyebrow" data-i18n="mapEyebrow">TU DEPORTE, MÁS CERCA</span>
-                    <h2 data-i18n="mapTitle">ENCUENTRA TU PRÓXIMA CANCHA.</h2>
-                    <p data-i18n="mapText">
-                        Explora ubicaciones de ejemplo y abre el mapa para
-                        consultar cómo llegar.
-                    </p>
-                    <div class="map-legend">
-                        <span><i class="legend-dot"></i><span data-i18n="mapLegend">Canchas de ejemplo</span></span>
-                    </div>
-                    <a href="#canchas" class="btn btn-primary">
-                        <span data-i18n="browseCourts">Explorar canchas</span>
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-                <div class="map-frame">
-                    <div id="prime-map" aria-label="Mapa de canchas deportivas"></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ENTRENADORES -->
-        <section class="section section-light" id="entrenadores">
-            <div class="container">
-                <div class="section-heading">
-                    <span class="eyebrow" data-i18n="coachesEyebrow">MEJORA CADA DÍA</span>
-                    <h2 data-i18n="coachesTitle">ENTRENA CON PROPÓSITO</h2>
-                    <p data-i18n="coachesText">
-                        Explora perfiles de ejemplo y descubre el tipo de
-                        entrenamiento que puede ayudarte a progresar.
-                    </p>
-                </div>
-                <div class="coach-grid" id="coach-grid">
-                    <!-- Generado por Script.js -->
-                </div>
-            </div>
-        </section>
-
-        <!-- COMUNIDAD -->
-        <section class="section" id="comunidad">
-            <div class="container community-layout">
-                <div class="community-art">
-                    <div class="community-art-circle"><i class="fa-solid fa-people-group"></i></div>
-                    <span class="community-label">PRIME COMMUNITY</span>
-                </div>
-                <div class="community-copy">
-                    <span class="eyebrow" data-i18n="communityEyebrow">MÁS QUE UN JUEGO</span>
-                    <h2 data-i18n="communityTitle">EL DEPORTE NOS CONECTA.</h2>
-                    <p data-i18n="communityText">
-                        PRIME busca conectar deportistas, fomentar hábitos
-                        positivos y crear oportunidades para crecer juntos.
-                    </p>
-                    <ul class="check-list">
-                        <li><i class="fa-solid fa-check"></i><span data-i18n="communityPoint1">Descubre nuevas oportunidades deportivas.</span></li>
-                        <li><i class="fa-solid fa-check"></i><span data-i18n="communityPoint2">Comparte metas y experiencias.</span></li>
-                        <li><i class="fa-solid fa-check"></i><span data-i18n="communityPoint3">Encuentra inspiración para seguir mejorando.</span></li>
-                    </ul>
-                    <a href="#acceso" class="btn btn-primary">
-                        <span data-i18n="joinPrime">Únete a PRIME</span>
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- BLOG -->
-        <section class="section section-light" id="blog">
-            <div class="container">
-                <div class="section-heading">
-                    <span class="eyebrow" data-i18n="blogEyebrow">IDEAS PARA TU PROGRESO</span>
-                    <h2 data-i18n="blogTitle">PRIME INSIGHTS</h2>
-                    <p data-i18n="blogText">
-                        Consejos para entrenar, trabajar en equipo y disfrutar del deporte.
-                    </p>
-                </div>
-                <div class="blog-grid">
-                    <article class="blog-card">
-                        <div class="blog-icon"><i class="fa-solid fa-bullseye"></i></div>
-                        <div class="blog-content">
-                            <span class="blog-category" data-i18n="blogCategoryTraining">ENTRENAMIENTO</span>
-                            <h3 data-i18n="blogOneTitle">Construye hábitos de entrenamiento</h3>
-                            <p data-i18n="blogOneText">La constancia y los objetivos realistas te ayudan a mejorar paso a paso.</p>
-                        </div>
-                    </article>
-                    <article class="blog-card">
-                        <div class="blog-icon"><i class="fa-solid fa-people-group"></i></div>
-                        <div class="blog-content">
-                            <span class="blog-category" data-i18n="blogCategoryTeam">TRABAJO EN EQUIPO</span>
-                            <h3 data-i18n="blogTwoTitle">Crecer también significa colaborar</h3>
-                            <p data-i18n="blogTwoText">La comunicación y el respeto son parte fundamental de cualquier equipo.</p>
-                        </div>
-                    </article>
-                    <article class="blog-card">
-                        <div class="blog-icon"><i class="fa-solid fa-heart-pulse"></i></div>
-                        <div class="blog-content">
-                            <span class="blog-category" data-i18n="blogCategoryWellness">BIENESTAR</span>
-                            <h3 data-i18n="blogThreeTitle">Entrena de forma equilibrada</h3>
-                            <p data-i18n="blogThreeText">Descansar, hidratarse y escuchar al cuerpo también forman parte del progreso.</p>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- CONTACTO -->
-        <section class="section" id="contacto">
-            <div class="container contact-layout">
-                <div class="contact-copy">
-                    <span class="eyebrow" data-i18n="contactEyebrow">HABLEMOS</span>
-                    <h2 data-i18n="contactTitle">¿TIENES UNA IDEA PARA PRIME?</h2>
-                    <p data-i18n="contactText">
-                        Envíanos un mensaje con tus dudas, sugerencias o propuestas.
-                    </p>
-                    <div class="contact-detail">
-                        <i class="fa-solid fa-envelope"></i>
-                        <span data-i18n="contactEmailHint">Completa el formulario para preparar tu mensaje.</span>
-                    </div>
-                </div>
-
-                <form class="contact-form" id="contact-form">
-                    <div class="form-group">
-                        <label for="contact-name" data-i18n="nameLabel">Nombre</label>
-                        <input id="contact-name" name="name" required
-                               autocomplete="name" data-i18n-placeholder="namePlaceholder"
-                               placeholder="Tu nombre">
-                    </div>
-                    <div class="form-group">
-                        <label for="contact-email" data-i18n="emailLabel">Correo electrónico</label>
-                        <input id="contact-email" name="email" type="email" required
-                               autocomplete="email" data-i18n-placeholder="emailPlaceholder"
-                               placeholder="tu@correo.com">
-                    </div>
-                    <div class="form-group">
-                        <label for="contact-message" data-i18n="messageLabel">Mensaje</label>
-                        <textarea id="contact-message" name="message" rows="5" required
-                                  data-i18n-placeholder="messagePlaceholder"
-                                  placeholder="Escribe tu mensaje..."></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-full">
-                        <span data-i18n="sendMessage">Preparar mensaje</span>
-                        <i class="fa-solid fa-paper-plane"></i>
-                    </button>
-                    <p class="form-note" data-i18n="contactFormNote">
-                        Este formulario abre tu aplicación de correo; no envía mensajes a un servidor.
-                    </p>
-                </form>
-            </div>
-        </section>
-
-        <!-- ACCESO -->
-        <section class="section section-dark" id="acceso">
-            <div class="container auth-layout">
-                <div class="auth-intro">
-                    <span class="eyebrow" data-i18n="accountEyebrow">TU EXPERIENCIA PRIME</span>
-                    <h2 data-i18n="accountTitle">ENTRA EN JUEGO.</h2>
-                    <p data-i18n="accountText">
-                        Crea una cuenta o inicia sesión para acceder a las funciones reservadas para usuarios.
-                    </p>
-                    <div class="auth-note">
-                        <i class="fa-solid fa-shield-halved"></i>
-                        <span data-i18n="authSetupNote">
-                            El acceso real necesita configuración de Firebase.
-                        </span>
-                    </div>
-                </div>
-
-                <div class="auth-card">
-                    <div class="auth-tabs">
-                        <button type="button" class="auth-tab active" id="login-tab"
-                                data-i18n="loginTab">Iniciar sesión</button>
-                        <button type="button" class="auth-tab" id="register-tab"
-                                data-i18n="registerTab">Crear cuenta</button>
-                    </div>
-
-                    <form id="login-form">
-                        <div class="form-group">
-                            <label for="login-email" data-i18n="emailLabel">Correo electrónico</label>
-                            <input id="login-email" name="email" type="email" required
-                                   autocomplete="email" placeholder="tu@correo.com">
-                        </div>
-                        <div class="form-group">
-                            <label for="login-password" data-i18n="passwordLabel">Contraseña</label>
-                            <input id="login-password" name="password" type="password" required
-                                   autocomplete="current-password" minlength="6"
-                                   placeholder="••••••••">
-                        </div>
-                        <button class="btn btn-primary btn-full" type="submit"
-                                data-i18n="loginButton">Iniciar sesión</button>
-                    </form>
-
-                    <form id="register-form" hidden>
-                        <div class="form-group">
-                            <label for="register-name" data-i18n="nameLabel">Nombre</label>
-                            <input id="register-name" name="name" required autocomplete="name"
-                                   placeholder="Tu nombre">
-                        </div>
-                        <div class="form-group">
-                            <label for="register-email" data-i18n="emailLabel">Correo electrónico</label>
-                            <input id="register-email" name="email" type="email" required
-                                   autocomplete="email" placeholder="tu@correo.com">
-                        </div>
-                        <div class="form-group">
-                            <label for="register-password" data-i18n="passwordLabel">Contraseña</label>
-                            <input id="register-password" name="password" type="password" required
-                                   autocomplete="new-password" minlength="6"
-                                   placeholder="Mínimo 6 caracteres">
-                        </div>
-                        <button class="btn btn-primary btn-full" type="submit"
-                                data-i18n="registerButton">Crear cuenta</button>
-                    </form>
-
-                    <div class="auth-divider"><span data-i18n="orContinue">O continúa con</span></div>
-
-                    <div class="social-auth">
-                        <button type="button" class="btn btn-social" data-provider="Google">
-                            <i class="fa-brands fa-google"></i> Google
-                        </button>
-                        <button type="button" class="btn btn-social" data-provider="Apple">
-                            <i class="fa-brands fa-apple"></i> Apple
-                        </button>
-                    </div>
-
-                    <p class="form-note" data-i18n="authDisclaimer">
-                        Google y Apple requieren habilitar y configurar esos proveedores en Firebase.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- PERFIL -->
-        <section class="section" id="perfil" hidden>
-            <div class="container profile-panel">
-                <span class="eyebrow" data-i18n="profileEyebrow">TU CUENTA</span>
-                <h2 data-i18n="profileTitle">MI PERFIL PRIME</h2>
-                <p id="profile-message"></p>
-                <button type="button" id="logout-button" class="btn btn-primary"
-                        data-i18n="logoutButton">Cerrar sesión</button>
-            </div>
-        </section>
-
-        <!-- LLAMADO FINAL -->
-        <section class="final-cta">
-            <div class="container final-cta-inner">
-                <div>
-                    <span class="eyebrow" data-i18n="ctaEyebrow">TU PRÓXIMO NIVEL EMPIEZA HOY</span>
-                    <h2 data-i18n="ctaTitle">¿LISTO PARA JUGAR?</h2>
-                </div>
-                <a href="#canchas" class="btn btn-light">
-                    <span data-i18n="explorePrime">Explorar PRIME</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                </a>
-            </div>
-        </section>
-    </main>
-
-    <!-- PIE DE PÁGINA -->
-    <footer class="footer">
-        <div class="container footer-main">
-            <div class="footer-brand">
-                <a href="#inicio" class="logo" aria-label="PRIME, inicio">
-                    <span class="logo-icon"><i class="fa-solid fa-bolt"></i></span>
-                    <span>PRIME<span class="logo-dot">.</span></span>
-                </a>
-                <p data-i18n="footerText">
-                    Conectamos deportistas con espacios, entrenadores y oportunidades.
-                </p>
-            </div>
-
-            <div class="footer-links">
-                <h3 data-i18n="footerExplore">Explorar</h3>
-                <a href="#canchas" data-i18n="navCourts">Canchas</a>
-                <a href="#entrenadores" data-i18n="navCoaches">Entrenadores</a>
-                <a href="#comunidad" data-i18n="navCommunity">Comunidad</a>
-            </div>
-
-            <div class="footer-links">
-                <h3 data-i18n="footerHelp">Ayuda</h3>
-                <a href="#contacto" data-i18n="navContact">Contacto</a>
-                <a href="#acceso" data-i18n="account">Mi cuenta</a>
-            </div>
-        </div>
-
-        <div class="container footer-bottom">
-            <span>© <span id="current-year"></span> PRIME. <span data-i18n="rights">Todos los derechos reservados.</span></span>
-            <a href="#inicio" class="back-top" data-i18n="backTop">Volver arriba ↑</a>
-        </div>
-    </footer>
-
-    <div class="toast" id="toast" role="status" aria-live="polite"></div>
-
-    <!-- Librerías -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-    <!-- Firebase: necesario para autenticación real -->
-    <script src="https://www.gstatic.com/firebasejs/12.5.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/12.5.0/firebase-auth-compat.js"></script>
-
-    <script src="Script.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/12.5.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/12.5.0/firebase-auth-compat.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="Script.js"></script>
 </body>
 </html>
