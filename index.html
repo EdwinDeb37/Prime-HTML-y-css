@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en" data-theme="dark">
 <head>
@@ -5,83 +6,226 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#ff6a00">
   <meta name="description" content="PRIME connects athletes with sports courts, coaches, and a sports community.">
+
   <title>PRIME — Your Sport, Your Community</title>
 
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+  >
+
+  <!-- Leaflet CSS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  >
+
+  <!-- PRIME CSS -->
   <link rel="stylesheet" href="Css.css">
 </head>
-<body>
-  <a class="skip-link" href="#app-main">Skip to content</a>
 
+<body>
+
+  <!-- Accessibility -->
+  <a class="skip-link" href="#app-main">
+    Skip to content
+  </a>
+
+  <!-- HEADER -->
   <header class="site-header">
     <div class="header-inner">
-      <a class="brand" href="#inicio" aria-label="PRIME, home">PRIME<span>.</span></a>
 
-      <button class="menu-toggle" id="menu-toggle" aria-label="Open menu" aria-expanded="false">
+      <!-- LOGO -->
+      <a
+        class="brand"
+        href="#inicio"
+        aria-label="PRIME, home"
+      >
+        PRIME<span>.</span>
+      </a>
+
+      <!-- MOBILE MENU BUTTON -->
+      <button
+        class="menu-toggle"
+        id="menu-toggle"
+        type="button"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="nav-menu"
+      >
         <i class="fa-solid fa-bars"></i>
       </button>
 
-      <nav class="nav-menu" id="nav-menu" aria-label="Main navigation">
-        <a class="nav-link" href="#inicio">Home</a>
-        <a class="nav-link" href="#canchas">Courts</a>
-        <a class="nav-link" href="#mapa">Map</a>
-        <a class="nav-link" href="#entrenadores">Coaches</a>
-        <a class="nav-link" href="#comunidad">Community</a>
-        <a class="nav-link" href="#blog">Blog</a>
-        <a class="nav-link" href="#contacto">Contact</a>
+      <!-- NAVIGATION -->
+      <nav
+        class="nav-menu"
+        id="nav-menu"
+        aria-label="Main navigation"
+      >
+        <a class="nav-link" href="#inicio">
+          Home
+        </a>
+
+        <a class="nav-link" href="#canchas">
+          Courts
+        </a>
+
+        <a class="nav-link" href="#mapa">
+          Map
+        </a>
+
+        <a class="nav-link" href="#entrenadores">
+          Coaches
+        </a>
+
+        <a class="nav-link" href="#comunidad">
+          Community
+        </a>
+
+        <a class="nav-link" href="#blog">
+          Blog
+        </a>
+
+        <a class="nav-link" href="#contacto">
+          Contact
+        </a>
       </nav>
 
+      <!-- HEADER TOOLS -->
       <div class="header-tools">
-        <button class="icon-button" id="theme-toggle" type="button" aria-label="Change theme" title="Change theme">
+
+        <!-- THEME TOGGLE -->
+        <button
+          class="icon-button"
+          id="theme-toggle"
+          type="button"
+          aria-label="Change theme"
+          title="Change theme"
+        >
           <i class="fa-solid fa-sun"></i>
         </button>
 
-        <a class="account-link" id="account-link" href="#acceso">My Account</a>
+        <!-- ACCOUNT -->
+        <a
+          class="account-link"
+          id="account-link"
+          href="#acceso"
+        >
+          My Account
+        </a>
+
       </div>
     </div>
   </header>
 
+  <!-- MAIN CONTENT -->
   <main id="app-main">
     <div id="page-content"></div>
   </main>
 
+  <!-- FOOTER -->
   <footer class="site-footer">
+
     <div class="footer-main wrap">
+
+      <!-- BRAND INFORMATION -->
       <div class="footer-brand">
-        <a class="brand brand-footer" href="#inicio">PRIME<span>.</span></a>
-        <p>Connecting athletes with sports facilities, coaches, and opportunities.</p>
+
+        <a class="brand brand-footer" href="#inicio">
+          PRIME<span>.</span>
+        </a>
+
+        <p>
+          We connect athletes with facilities, coaches, and opportunities.
+        </p>
+
       </div>
 
+      <!-- EXPLORE -->
       <div>
         <h3>Explore</h3>
-        <a href="#canchas">Courts</a>
-        <a href="#entrenadores">Coaches</a>
-        <a href="#comunidad">Community</a>
+
+        <a href="#canchas">
+          Courts
+        </a>
+
+        <a href="#entrenadores">
+          Coaches
+        </a>
+
+        <a href="#comunidad">
+          Community
+        </a>
       </div>
 
+      <!-- HELP -->
       <div>
-        <h3>Support</h3>
-        <a href="#contacto">Contact</a>
-        <a href="#acceso">My Account</a>
-        <a href="#blog">Blog</a>
+        <h3>Help</h3>
+
+        <a href="#contacto">
+          Contact
+        </a>
+
+        <a href="#acceso">
+          My Account
+        </a>
+
+        <a href="#blog">
+          Blog
+        </a>
       </div>
+
     </div>
 
+    <!-- FOOTER BOTTOM -->
     <div class="footer-bottom">
-      <span>© <span id="current-year"></span> PRIME. All rights reserved.</span>
-      <a href="#inicio">Back to top ↑</a>
+
+      <span>
+        © <span id="current-year"></span> PRIME.
+        All rights reserved.
+      </span>
+
+      <a href="#inicio">
+        Back to top ↑
+      </a>
+
     </div>
+
   </footer>
 
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <!-- NOTIFICATION -->
+  <div
+    class="toast"
+    id="toast"
+    role="status"
+    aria-live="polite"
+  ></div>
 
-  <script src="https://www.gstatic.com/firebasejs/12.5.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/12.5.0/firebase-auth-compat.js"></script>
+  <!-- =====================================
+       EXTERNAL LIBRARIES
+  ====================================== -->
+
+  <!-- SUPABASE -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <!-- LEAFLET MAP -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- =====================================
+       PRIME JAVASCRIPT
+  ====================================== -->
+
   <script src="Script.js"></script>
+
 </body>
 </html>

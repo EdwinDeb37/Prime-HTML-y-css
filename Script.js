@@ -1,19 +1,23 @@
-/* PRIME — navigation, courts, coaches, map, and account */
+
+// PRIME — Supabase authentication, navigation, courts, coaches, and map
 "use strict";
 
-/* Firebase configuration.
-   Replace these values with your Firebase project settings. */
-const firebaseConfig = {
-  apiKey: "PEGA_AQUI_TU_API_KEY",
-  authDomain: "PEGA_AQUI_TU_AUTH_DOMAIN",
-  projectId: "PEGA_AQUI_TU_PROJECT_ID",
-  appId: "PEGA_AQUI_TU_APP_ID"
-};
+/* =========================================
+   SUPABASE CONFIGURATION
+========================================= */
 
-let auth = null;
+const SUPABASE_URL = "https://drvsrokhtftehfzdvssb.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_jyLTA4C6u4VczaFTqcj9iA_wKfsLr2H";
+
+let supabaseClient = null;
 let currentUser = null;
 let mapInstance = null;
 let mapMarkers = [];
+
+/* =========================================
+   SAMPLE DATA
+========================================= */
 
 const courts = [
   {
@@ -141,6 +145,10 @@ const articles = [
   }
 ];
 
+/* =========================================
+   GENERAL HELPERS
+========================================= */
+
 const $ = (selector, parent = document) =>
   parent.querySelector(selector);
 
@@ -197,7 +205,9 @@ function callToAction() {
   `;
 }
 
-/* HOME */
+/* =========================================
+   HOME
+========================================= */
 
 function homePage() {
   return `
@@ -333,7 +343,9 @@ function homePage() {
   `;
 }
 
-/* COURTS */
+/* =========================================
+   COURTS
+========================================= */
 
 function courtsPage() {
   return `
@@ -457,7 +469,9 @@ function setupCourtFilters() {
   render();
 }
 
-/* MAP */
+/* =========================================
+   MAP
+========================================= */
 
 function mapPage() {
   return `
@@ -536,7 +550,9 @@ function initializeMap() {
   });
 }
 
-/* COACHES */
+/* =========================================
+   COACHES
+========================================= */
 
 function coachesPage() {
   return `
@@ -599,7 +615,9 @@ function setupCoachButtons() {
   });
 }
 
-/* COMMUNITY */
+/* =========================================
+   COMMUNITY
+========================================= */
 
 function communityPage() {
   return `
@@ -666,7 +684,9 @@ function communityPage() {
   `;
 }
 
-/* BLOG */
+/* =========================================
+   BLOG
+========================================= */
 
 function blogPage() {
   return `
@@ -730,7 +750,9 @@ function setupArticles() {
   });
 }
 
-/* CONTACT */
+/* =========================================
+   CONTACT
+========================================= */
 
 function contactPage() {
   return `
@@ -813,7 +835,9 @@ function setupContactForm() {
   });
 }
 
-/* LOGIN AND REGISTRATION */
+/* =========================================
+   LOGIN AND REGISTRATION
+========================================= */
 
 function accessPage() {
   return `
@@ -841,8 +865,7 @@ function accessPage() {
           </ul>
 
           <p class="note">
-            To enable real sign-in, configure Firebase
-            in the JavaScript file.
+            Your account is powered by Supabase authentication.
           </p>
         </aside>
 
@@ -904,12 +927,12 @@ function accessPage() {
 
           <div class="social-buttons">
             <button class="social-button" type="button"
-              data-provider="Google">
+              data-provider="google">
               <i class="fa-brands fa-google"></i> Google
             </button>
 
             <button class="social-button" type="button"
-              data-provider="Apple">
+              data-provider="apple">
               <i class="fa-brands fa-apple"></i> Apple
             </button>
           </div>
@@ -944,51 +967,70 @@ function setupAuthForms() {
   login.addEventListener("submit", async event => {
     event.preventDefault();
 
-    if (!auth) {
-      showToast("Configure Firebase to enable sign-in.");
+    if (!supabaseClient) {
+      showToast("Supabase is not configured yet.");
       return;
     }
 
     const data = new FormData(login);
+    const email = String(data.get("email")).trim();
+    const password = String(data.get("password"));
 
     try {
-      await auth.signInWithEmailAndPassword(
-        String(data.get("email")).trim(),
-        String(data.get("password"))
-      );
+      const { error } = await supabaseClient.auth.signInWithPassword({
+        email,
+        password
+      });
 
+      if (error) throw error;
+
+      showToast("Welcome back to PRIME!");
       location.hash = "#perfil";
+
     } catch (error) {
-      showToast("Sign-in failed. Please check your details.");
-      console.error(error);
+      console.error("Sign-in error:", error);
+      showToast(error.message || "Sign-in failed. Please check your details.");
     }
   });
 
   register.addEventListener("submit", async event => {
     event.preventDefault();
 
-    if (!auth) {
-      showToast("Configure Firebase to enable registration.");
+    if (!supabaseClient) {
+      showToast("Supabase is not configured yet.");
       return;
     }
 
     const data = new FormData(register);
+    const name = String(data.get("name")).trim();
+    const email = String(data.get("email")).trim();
+    const password = String(data.get("password"));
 
     try {
-      const credential = await auth.createUserWithEmailAndPassword(
-        String(data.get("email")).trim(),
-        String(data.get("password"))
-      );
-
-      await credential.user.updateProfile({
-        displayName: String(data.get("name")).trim()
+      const { data: result, error } = await supabaseClient.auth.signUp({
+        email,
+        password,
+        options: {
+          data: {
+            full_name: name
+          }
+        }
       });
 
-      currentUser = credential.user;
-      location.hash = "#perfil";
+      if (error) throw error;
+
+      if (result.session) {
+        currentUser = result.session.user;
+        showToast("Your PRIME account has been created!");
+        location.hash = "#perfil";
+      } else {
+        showToast("Account created! Check your email to confirm your account.");
+        loginTab.click();
+      }
+
     } catch (error) {
-      showToast("Account creation failed. Please check your details.");
-      console.error(error);
+      console.error("Registration error:", error);
+      showToast(error.message || "Account creation failed. Please try again.");
     }
   });
 
@@ -999,32 +1041,38 @@ function setupAuthForms() {
   });
 }
 
-async function socialLogin(providerName) {
-  if (!auth) {
-    showToast("Configure Firebase to enable sign-in.");
+/* =========================================
+   SOCIAL LOGIN
+========================================= */
+
+async function socialLogin(provider) {
+  if (!supabaseClient) {
+    showToast("Supabase is not configured yet.");
     return;
   }
 
-  let provider;
-
-  if (providerName === "Google") {
-    provider = new firebase.auth.GoogleAuthProvider();
-  } else {
-    provider = new firebase.auth.OAuthProvider("apple.com");
-    provider.addScope("email");
-    provider.addScope("name");
-  }
-
   try {
-    await auth.signInWithPopup(provider);
-    location.hash = "#perfil";
+    const redirectTo =
+      `${window.location.origin}${window.location.pathname}`;
+
+    const { error } = await supabaseClient.auth.signInWithOAuth({
+      provider,
+      options: {
+        redirectTo
+      }
+    });
+
+    if (error) throw error;
+
   } catch (error) {
-    showToast("Social sign-in could not be completed.");
-    console.error(error);
+    console.error("Social sign-in error:", error);
+    showToast(error.message || "Social sign-in could not be completed.");
   }
 }
 
-/* PROFILE */
+/* =========================================
+   PROFILE
+========================================= */
 
 function profilePage() {
   if (!currentUser) {
@@ -1044,7 +1092,11 @@ function profilePage() {
     `;
   }
 
-  const name = currentUser.displayName || currentUser.email || "PRIME";
+  const name =
+    currentUser.user_metadata?.full_name ||
+    currentUser.user_metadata?.name ||
+    currentUser.email ||
+    "PRIME";
 
   return `
     ${pageHero(
@@ -1082,17 +1134,27 @@ function profilePage() {
 
 function setupLogout() {
   $("#logout-button")?.addEventListener("click", async () => {
-    if (auth) {
-      await auth.signOut();
-    }
+    if (!supabaseClient) return;
 
-    currentUser = null;
-    location.hash = "#inicio";
-    showToast("You have signed out.");
+    try {
+      const { error } = await supabaseClient.auth.signOut();
+
+      if (error) throw error;
+
+      currentUser = null;
+      location.hash = "#inicio";
+      showToast("You have signed out.");
+
+    } catch (error) {
+      console.error("Sign-out error:", error);
+      showToast("Could not sign out. Please try again.");
+    }
   });
 }
 
-/* PAGE NAVIGATION */
+/* =========================================
+   PAGE NAVIGATION
+========================================= */
 
 function currentRoute() {
   const route = (location.hash || "#inicio").slice(1).split("?")[0];
@@ -1115,6 +1177,8 @@ function currentRoute() {
 function renderRoute() {
   const route = currentRoute();
   const content = $("#page-content");
+
+  if (!content) return;
 
   if (route !== "mapa" && mapInstance) {
     mapInstance.remove();
@@ -1154,7 +1218,22 @@ function renderRoute() {
   if (route === "perfil") setupLogout();
 }
 
-/* LIGHT AND DARK THEME */
+/* =========================================
+   ACCOUNT LINK
+========================================= */
+
+function updateAccountLink() {
+  const accountLink = $("#account-link");
+
+  if (!accountLink) return;
+
+  accountLink.href = currentUser ? "#perfil" : "#acceso";
+  accountLink.textContent = currentUser ? "My Profile" : "My Account";
+}
+
+/* =========================================
+   LIGHT AND DARK THEME
+========================================= */
 
 function applyTheme(theme) {
   const selectedTheme = theme === "light" ? "light" : "dark";
@@ -1177,48 +1256,61 @@ function applyTheme(theme) {
   }
 }
 
-/* FIREBASE */
+/* =========================================
+   SUPABASE INITIALIZATION
+========================================= */
 
-function initializeFirebase() {
-  const configured =
-    firebaseConfig.apiKey !== "PEGA_AQUI_TU_API_KEY" &&
-    firebaseConfig.authDomain !== "PEGA_AQUI_TU_AUTH_DOMAIN" &&
-    firebaseConfig.projectId !== "PEGA_AQUI_TU_PROJECT_ID" &&
-    firebaseConfig.appId !== "PEGA_AQUI_TU_APP_ID";
+async function initializeSupabase() {
+  if (
+    !SUPABASE_URL ||
+    !SUPABASE_PUBLISHABLE_KEY
+  ) {
+    console.warn("Supabase configuration is missing.");
+    updateAccountLink();
+    return;
+  }
 
-  if (!configured || typeof firebase === "undefined") {
+  if (!window.supabase || typeof window.supabase.createClient !== "function") {
+    console.error("Supabase library could not be loaded.");
+    showToast("Supabase could not be loaded. Check your connection.");
     return;
   }
 
   try {
-    if (!firebase.apps.length) {
-      firebase.initializeApp(firebaseConfig);
-    }
+    supabaseClient = window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_PUBLISHABLE_KEY
+    );
 
-    auth = firebase.auth();
+    // Restore the user's existing session.
+    const { data, error } = await supabaseClient.auth.getSession();
 
-    auth.onAuthStateChanged(user => {
-      currentUser = user;
+    if (error) throw error;
 
-      const accountLink = $("#account-link");
+    currentUser = data.session?.user || null;
+    updateAccountLink();
 
-      if (accountLink) {
-        accountLink.href = user ? "#perfil" : "#acceso";
-        accountLink.textContent = user ? "My Profile" : "My Account";
-      }
+    // Listen for sign-in, sign-out, and session changes.
+    supabaseClient.auth.onAuthStateChange((event, session) => {
+      currentUser = session?.user || null;
+      updateAccountLink();
 
       if (currentRoute() === "perfil") {
         renderRoute();
       }
     });
+
   } catch (error) {
-    console.error("Firebase error:", error);
+    console.error("Supabase initialization error:", error);
+    showToast("Could not connect to Supabase.");
   }
 }
 
-/* INITIALIZATION */
+/* =========================================
+   INITIALIZATION
+========================================= */
 
-function initialize() {
+async function initialize() {
   const year = $("#current-year");
 
   if (year) {
@@ -1226,9 +1318,9 @@ function initialize() {
   }
 
   const savedTheme = localStorage.getItem("prime-theme") || "dark";
-
   applyTheme(savedTheme);
-  initializeFirebase();
+
+  await initializeSupabase();
 
   $("#theme-toggle")?.addEventListener("click", () => {
     const nextTheme =
@@ -1241,6 +1333,8 @@ function initialize() {
   const navMenu = $("#nav-menu");
 
   menuToggle?.addEventListener("click", () => {
+    if (!navMenu) return;
+
     const isOpen = navMenu.classList.toggle("open");
 
     menuToggle.setAttribute("aria-expanded", String(isOpen));
@@ -1252,7 +1346,7 @@ function initialize() {
 
   $$("#nav-menu a").forEach(link => {
     link.addEventListener("click", () => {
-      navMenu.classList.remove("open");
+      navMenu?.classList.remove("open");
       menuToggle?.setAttribute("aria-expanded", "false");
 
       if (menuToggle) {
