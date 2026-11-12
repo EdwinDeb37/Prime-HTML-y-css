@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="es" data-theme="dark">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#ff6a00">
-  <meta name="description" content="PRIME conecta deportistas con canchas, entrenadores y una comunidad deportiva.">
-  <title>PRIME — Tu deporte, tu comunidad</title>
+  <meta name="description" content="PRIME connects athletes with sports courts, coaches, and a sports community.">
+  <title>PRIME — Your Sport, Your Community</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,27 +15,32 @@
   <link rel="stylesheet" href="Css.css">
 </head>
 <body>
-  <a class="skip-link" href="#app-main">Saltar al contenido</a>
+  <a class="skip-link" href="#app-main">Skip to content</a>
+
   <header class="site-header">
     <div class="header-inner">
-      <a class="brand" href="#inicio" aria-label="PRIME, inicio">PRIME<span>.</span></a>
-      <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
-      <nav class="nav-menu" id="nav-menu" aria-label="Navegación principal">
-        <a class="nav-link" href="#inicio" data-i18n="navHome">Inicio</a>
-        <a class="nav-link" href="#canchas" data-i18n="navCourts">Canchas</a>
-        <a class="nav-link" href="#mapa" data-i18n="navMap">Mapa</a>
-        <a class="nav-link" href="#entrenadores" data-i18n="navCoaches">Entrenadores</a>
-        <a class="nav-link" href="#comunidad" data-i18n="navCommunity">Comunidad</a>
-        <a class="nav-link" href="#blog" data-i18n="navBlog">Blog</a>
-        <a class="nav-link" href="#contacto" data-i18n="navContact">Contacto</a>
+      <a class="brand" href="#inicio" aria-label="PRIME, home">PRIME<span>.</span></a>
+
+      <button class="menu-toggle" id="menu-toggle" aria-label="Open menu" aria-expanded="false">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <nav class="nav-menu" id="nav-menu" aria-label="Main navigation">
+        <a class="nav-link" href="#inicio">Home</a>
+        <a class="nav-link" href="#canchas">Courts</a>
+        <a class="nav-link" href="#mapa">Map</a>
+        <a class="nav-link" href="#entrenadores">Coaches</a>
+        <a class="nav-link" href="#comunidad">Community</a>
+        <a class="nav-link" href="#blog">Blog</a>
+        <a class="nav-link" href="#contacto">Contact</a>
       </nav>
+
       <div class="header-tools">
-        <label class="sr-only" for="language-select">Language / Idioma</label>
-        <select id="language-select" class="language-select" aria-label="Seleccionar idioma">
-          <option value="es">ES</option><option value="en">EN</option><option value="fr">FR</option><option value="pt">PT</option>
-        </select>
-        <button class="icon-button" id="theme-toggle" type="button" aria-label="Cambiar tema" title="Cambiar tema"><i class="fa-solid fa-sun"></i></button>
-        <a class="account-link" id="account-link" href="#acceso" data-i18n="account">Mi cuenta</a>
+        <button class="icon-button" id="theme-toggle" type="button" aria-label="Change theme" title="Change theme">
+          <i class="fa-solid fa-sun"></i>
+        </button>
+
+        <a class="account-link" id="account-link" href="#acceso">My Account</a>
       </div>
     </div>
   </header>
@@ -48,24 +53,27 @@
     <div class="footer-main wrap">
       <div class="footer-brand">
         <a class="brand brand-footer" href="#inicio">PRIME<span>.</span></a>
-        <p data-i18n="footerText">Conectamos deportistas con espacios, entrenadores y oportunidades.</p>
+        <p>Connecting athletes with sports facilities, coaches, and opportunities.</p>
       </div>
+
       <div>
-        <h3 data-i18n="footerExplore">Explorar</h3>
-        <a href="#canchas" data-i18n="navCourts">Canchas</a>
-        <a href="#entrenadores" data-i18n="navCoaches">Entrenadores</a>
-        <a href="#comunidad" data-i18n="navCommunity">Comunidad</a>
+        <h3>Explore</h3>
+        <a href="#canchas">Courts</a>
+        <a href="#entrenadores">Coaches</a>
+        <a href="#comunidad">Community</a>
       </div>
+
       <div>
-        <h3 data-i18n="footerHelp">Ayuda</h3>
-        <a href="#contacto" data-i18n="navContact">Contacto</a>
-        <a href="#acceso" data-i18n="account">Mi cuenta</a>
-        <a href="#blog" data-i18n="navBlog">Blog</a>
+        <h3>Support</h3>
+        <a href="#contacto">Contact</a>
+        <a href="#acceso">My Account</a>
+        <a href="#blog">Blog</a>
       </div>
     </div>
+
     <div class="footer-bottom">
-      <span>© <span id="current-year"></span> PRIME. <span data-i18n="rights">Todos los derechos reservados.</span></span>
-      <a href="#inicio" data-i18n="backTop">Volver arriba ↑</a>
+      <span>© <span id="current-year"></span> PRIME. All rights reserved.</span>
+      <a href="#inicio">Back to top ↑</a>
     </div>
   </footer>
 

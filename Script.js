@@ -1,8 +1,8 @@
-/* PRIME — navegación, canchas, entrenadores, mapa y cuenta */
+/* PRIME — navigation, courts, coaches, map, and account */
 "use strict";
 
-/* Configuración de Firebase.
-   Reemplaza estos valores por los de tu proyecto Firebase. */
+/* Firebase configuration.
+   Replace these values with your Firebase project settings. */
 const firebaseConfig = {
   apiKey: "PEGA_AQUI_TU_API_KEY",
   authDomain: "PEGA_AQUI_TU_AUTH_DOMAIN",
@@ -18,9 +18,9 @@ let mapMarkers = [];
 const courts = [
   {
     id: 1,
-    name: "Cancha Central",
-    location: "Ciudad de Panamá",
-    sport: "Baloncesto",
+    name: "Central Court",
+    location: "Panama City",
+    sport: "Basketball",
     type: "basketball",
     lat: 8.9824,
     lng: -79.5199,
@@ -29,9 +29,9 @@ const courts = [
   },
   {
     id: 2,
-    name: "Complejo Deportivo",
-    location: "San Francisco, Panamá",
-    sport: "Fútbol",
+    name: "Sports Complex",
+    location: "San Francisco, Panama",
+    sport: "Soccer",
     type: "football",
     lat: 8.9904,
     lng: -79.5057,
@@ -40,9 +40,9 @@ const courts = [
   },
   {
     id: 3,
-    name: "Club de Tenis",
-    location: "Costa del Este, Panamá",
-    sport: "Tenis",
+    name: "Tennis Club",
+    location: "Costa del Este, Panama",
+    sport: "Tennis",
     type: "tennis",
     lat: 9.0058,
     lng: -79.4642,
@@ -51,9 +51,9 @@ const courts = [
   },
   {
     id: 4,
-    name: "Cancha Metropolitana",
-    location: "Parque Omar, Panamá",
-    sport: "Baloncesto",
+    name: "Metropolitan Court",
+    location: "Omar Park, Panama",
+    sport: "Basketball",
     type: "basketball",
     lat: 8.9936,
     lng: -79.5033,
@@ -62,9 +62,9 @@ const courts = [
   },
   {
     id: 5,
-    name: "Campo de Fútbol",
-    location: "La Chorrera, Panamá Oeste",
-    sport: "Fútbol",
+    name: "Soccer Field",
+    location: "La Chorrera, West Panama",
+    sport: "Soccer",
     type: "football",
     lat: 8.8803,
     lng: -79.7833,
@@ -73,9 +73,9 @@ const courts = [
   },
   {
     id: 6,
-    name: "Cancha Multiuso",
-    location: "Arraiján, Panamá Oeste",
-    sport: "Voleibol",
+    name: "Multi-purpose Court",
+    location: "Arraijan, West Panama",
+    sport: "Volleyball",
     type: "volleyball",
     lat: 8.9495,
     lng: -79.6601,
@@ -86,57 +86,57 @@ const courts = [
 
 const coaches = [
   {
-    name: "Alex Rodríguez",
-    specialty: "Baloncesto",
+    name: "Alex Rodriguez",
+    specialty: "Basketball",
     icon: "fa-basketball",
-    description: "Técnica, coordinación y fundamentos deportivos."
+    description: "Technique, coordination, and sports fundamentals."
   },
   {
-    name: "Daniel Martínez",
-    specialty: "Fútbol",
+    name: "Daniel Martinez",
+    specialty: "Soccer",
     icon: "fa-futbol",
-    description: "Control del balón, táctica y trabajo en equipo."
+    description: "Ball control, tactics, and teamwork."
   },
   {
-    name: "Sofía Herrera",
-    specialty: "Preparación física",
+    name: "Sofia Herrera",
+    specialty: "Physical Training",
     icon: "fa-dumbbell",
-    description: "Movilidad, fuerza general y preparación física."
+    description: "Mobility, general strength, and physical conditioning."
   }
 ];
 
 const articles = [
   {
-    category: "ENTRENAMIENTO",
-    title: "Construye hábitos de entrenamiento",
-    text: "La constancia y los objetivos realistas te ayudan a mejorar paso a paso.",
+    category: "TRAINING",
+    title: "Build Training Habits",
+    text: "Consistency and realistic goals help you improve step by step.",
     icon: "fa-stopwatch",
     tips: [
-      "Define objetivos concretos para cada sesión.",
-      "Registra tus avances.",
-      "Reserva tiempo para descansar y recuperarte."
+      "Set specific goals for each session.",
+      "Track your progress.",
+      "Make time to rest and recover."
     ]
   },
   {
-    category: "TRABAJO EN EQUIPO",
-    title: "Crecer también significa colaborar",
-    text: "La comunicación y el respeto son fundamentales en cualquier equipo.",
+    category: "TEAMWORK",
+    title: "Growing Also Means Working Together",
+    text: "Communication and respect are essential in every team.",
     icon: "fa-people-group",
     tips: [
-      "Escucha las ideas de tus compañeros.",
-      "Comunica tus objetivos con claridad.",
-      "Respeta las diferencias y juega limpio."
+      "Listen to your teammates' ideas.",
+      "Communicate your goals clearly.",
+      "Respect differences and play fair."
     ]
   },
   {
-    category: "BIENESTAR",
-    title: "Entrena de forma equilibrada",
-    text: "Descansar, hidratarse y escuchar al cuerpo también forman parte del progreso.",
+    category: "WELLNESS",
+    title: "Train with Balance",
+    text: "Resting, staying hydrated, and listening to your body are also part of progress.",
     icon: "fa-heart-pulse",
     tips: [
-      "Mantén una hidratación adecuada.",
-      "Duerme lo suficiente.",
-      "Prioriza la técnica y la seguridad."
+      "Stay properly hydrated.",
+      "Get enough sleep.",
+      "Prioritize technique and safety."
     ]
   }
 ];
@@ -188,58 +188,58 @@ function callToAction() {
     <section class="cta">
       <div class="wrap cta-inner">
         <div>
-          <p class="eyebrow">TU PRÓXIMO NIVEL EMPIEZA HOY</p>
-          <h2>¿LISTO PARA JUGAR?</h2>
+          <p class="eyebrow">YOUR NEXT LEVEL STARTS TODAY</p>
+          <h2>READY TO PLAY?</h2>
         </div>
-        <a class="btn" href="#canchas">Explorar PRIME</a>
+        <a class="btn" href="#canchas">Explore PRIME</a>
       </div>
     </section>
   `;
 }
 
-/* INICIO */
+/* HOME */
 
 function homePage() {
   return `
     <section class="hero">
       <div class="wrap hero-inner">
-        <p class="eyebrow">TU DEPORTE. TU COMUNIDAD. TU NIVEL.</p>
+        <p class="eyebrow">YOUR SPORT. YOUR COMMUNITY. YOUR LEVEL.</p>
 
         <h1>
-          LLEVA TU JUEGO<br>
-          <span class="highlight">AL SIGUIENTE NIVEL.</span>
+          TAKE YOUR GAME<br>
+          <span class="highlight">TO THE NEXT LEVEL.</span>
         </h1>
 
         <p class="hero-copy">
-          Encuentra canchas, conecta con entrenadores y forma parte
-          de una comunidad que vive el deporte.
+          Find courts, connect with coaches, and become part
+          of a community that lives and breathes sports.
         </p>
 
         <div class="button-row">
           <a class="btn btn-primary" href="#canchas">
             <i class="fa-solid fa-location-dot"></i>
-            Encuentra una cancha
+            Find a Court
           </a>
 
           <a class="btn btn-secondary" href="#entrenadores">
-            Conoce a los entrenadores
+            Meet the Coaches
           </a>
         </div>
 
         <div class="hero-stats">
           <div class="stat">
-            <strong>ENCUENTRA</strong>
-            <span>Tu espacio deportivo</span>
+            <strong>DISCOVER</strong>
+            <span>Your sports space</span>
           </div>
 
           <div class="stat">
-            <strong>ENTRENA</strong>
-            <span>Con profesionales</span>
+            <strong>TRAIN</strong>
+            <span>With professionals</span>
           </div>
 
           <div class="stat">
-            <strong>SUPÉRATE</strong>
-            <span>Mejora cada día</span>
+            <strong>IMPROVE</strong>
+            <span>Get better every day</span>
           </div>
         </div>
       </div>
@@ -249,11 +249,11 @@ function homePage() {
       <div class="wrap">
         <div class="section-heading">
           <div>
-            <p class="eyebrow">HECHO PARA DEPORTISTAS</p>
-            <h2>TODO PARA AVANZAR</h2>
+            <p class="eyebrow">MADE FOR ATHLETES</p>
+            <h2>EVERYTHING YOU NEED TO MOVE FORWARD</h2>
             <p>
-              Encuentra espacios para jugar, personas que te ayuden
-              a mejorar y una comunidad que te motive.
+              Find places to play, people who can help you improve,
+              and a community that keeps you motivated.
             </p>
           </div>
         </div>
@@ -263,27 +263,27 @@ function homePage() {
             <div class="feature-icon">
               <i class="fa-solid fa-basketball"></i>
             </div>
-            <h3>Canchas cerca de ti</h3>
-            <p>Descubre instalaciones deportivas y consulta sus ubicaciones.</p>
-            <a class="text-link" href="#canchas">Explorar canchas →</a>
+            <h3>Courts Near You</h3>
+            <p>Discover sports facilities and check their locations.</p>
+            <a class="text-link" href="#canchas">Explore Courts →</a>
           </article>
 
           <article class="feature-card">
             <div class="feature-icon">
               <i class="fa-solid fa-dumbbell"></i>
             </div>
-            <h3>Entrenadores</h3>
-            <p>Encuentra opciones de entrenamiento para desarrollar tus habilidades.</p>
-            <a class="text-link" href="#entrenadores">Ver entrenadores →</a>
+            <h3>Coaches</h3>
+            <p>Find training options to develop your skills.</p>
+            <a class="text-link" href="#entrenadores">View Coaches →</a>
           </article>
 
           <article class="feature-card">
             <div class="feature-icon">
               <i class="fa-solid fa-people-group"></i>
             </div>
-            <h3>Comunidad deportiva</h3>
-            <p>Comparte experiencias, ideas y objetivos con otros deportistas.</p>
-            <a class="text-link" href="#comunidad">Conocer comunidad →</a>
+            <h3>Sports Community</h3>
+            <p>Share experiences, ideas, and goals with other athletes.</p>
+            <a class="text-link" href="#comunidad">Join the Community →</a>
           </article>
         </div>
       </div>
@@ -293,8 +293,8 @@ function homePage() {
       <div class="wrap">
         <div class="section-heading">
           <div>
-            <p class="eyebrow">DESCUBRE PRIME</p>
-            <h2>ELIGE TU PRÓXIMO PASO</h2>
+            <p class="eyebrow">DISCOVER PRIME</p>
+            <h2>CHOOSE YOUR NEXT STEP</h2>
           </div>
         </div>
 
@@ -303,27 +303,27 @@ function homePage() {
             <div class="feature-icon">
               <i class="fa-solid fa-map-location-dot"></i>
             </div>
-            <h3>Explora el mapa</h3>
-            <p>Consulta ubicaciones deportivas de ejemplo en Panamá.</p>
-            <a class="text-link" href="#mapa">Abrir mapa →</a>
+            <h3>Explore the Map</h3>
+            <p>Check out sample sports locations in Panama.</p>
+            <a class="text-link" href="#mapa">Open Map →</a>
           </article>
 
           <article class="feature-card">
             <div class="feature-icon">
               <i class="fa-solid fa-book-open"></i>
             </div>
-            <h3>Aprende y mejora</h3>
-            <p>Lee consejos sobre entrenamiento, bienestar y trabajo en equipo.</p>
-            <a class="text-link" href="#blog">Leer consejos →</a>
+            <h3>Learn and Improve</h3>
+            <p>Read tips about training, wellness, and teamwork.</p>
+            <a class="text-link" href="#blog">Read Tips →</a>
           </article>
 
           <article class="feature-card">
             <div class="feature-icon">
               <i class="fa-solid fa-user"></i>
             </div>
-            <h3>Tu perfil</h3>
-            <p>Accede a las opciones de cuenta de PRIME.</p>
-            <a class="text-link" href="#acceso">Mi cuenta →</a>
+            <h3>Your Profile</h3>
+            <p>Access your PRIME account options.</p>
+            <a class="text-link" href="#acceso">My Account →</a>
           </article>
         </div>
       </div>
@@ -333,46 +333,46 @@ function homePage() {
   `;
 }
 
-/* CANCHAS */
+/* COURTS */
 
 function courtsPage() {
   return `
     ${pageHero(
-      "ENCUENTRA TU ESPACIO",
-      "CANCHAS DESTACADAS",
-      "Busca instalaciones deportivas y explora ubicaciones de ejemplo en Panamá."
+      "FIND YOUR SPACE",
+      "FEATURED COURTS",
+      "Search for sports facilities and explore sample locations in Panama."
     )}
 
     <section class="page-content">
       <div class="wrap">
         <div class="toolbar">
           <div class="field">
-            <label for="court-search">Buscar cancha</label>
+            <label for="court-search">Search Courts</label>
             <input id="court-search" type="search"
-              placeholder="Nombre o ubicación">
+              placeholder="Name or location">
           </div>
 
           <div class="field">
-            <label for="sport-filter">Deporte</label>
+            <label for="sport-filter">Sport</label>
             <select id="sport-filter">
-              <option value="all">Todos los deportes</option>
-              <option value="basketball">Baloncesto</option>
-              <option value="football">Fútbol</option>
-              <option value="tennis">Tenis</option>
-              <option value="volleyball">Voleibol</option>
+              <option value="all">All Sports</option>
+              <option value="basketball">Basketball</option>
+              <option value="football">Soccer</option>
+              <option value="tennis">Tennis</option>
+              <option value="volleyball">Volleyball</option>
             </select>
           </div>
 
           <a class="btn btn-secondary" href="#mapa">
-            Ver mapa <i class="fa-solid fa-map"></i>
+            View Map <i class="fa-solid fa-map"></i>
           </a>
         </div>
 
         <div class="court-grid" id="court-grid"></div>
 
         <p class="note">
-          Las canchas y tarifas son datos de demostración.
-          Confirma la disponibilidad directamente con cada instalación.
+          Courts and prices are sample data.
+          Please confirm availability directly with each facility.
         </p>
       </div>
     </section>
@@ -421,18 +421,18 @@ function setupCourtFilters() {
             <div class="court-bottom">
               <span class="court-price">
                 $${court.price}
-                <small>por hora · ejemplo</small>
+                <small>per hour · sample price</small>
               </span>
 
               <button class="btn btn-primary location-button"
                 data-id="${court.id}">
-                Ver ubicación
+                View Location
               </button>
             </div>
           </div>
         </article>
       `).join("")
-      : `<p class="empty-state">No se encontraron canchas.</p>`;
+      : `<p class="empty-state">No courts found.</p>`;
 
     $$(".location-button", grid).forEach(button => {
       button.addEventListener("click", () => {
@@ -457,26 +457,26 @@ function setupCourtFilters() {
   render();
 }
 
-/* MAPA */
+/* MAP */
 
 function mapPage() {
   return `
     ${pageHero(
-      "TU DEPORTE, MÁS CERCA",
-      "ENCUENTRA TU PRÓXIMA CANCHA",
-      "Explora ubicaciones de ejemplo y consulta cómo llegar."
+      "YOUR SPORT, CLOSER",
+      "FIND YOUR NEXT COURT",
+      "Explore sample locations and find out how to get there."
     )}
 
     <section class="page-content">
       <div class="wrap map-layout">
-        <div id="prime-map" aria-label="Mapa de canchas"></div>
+        <div id="prime-map" aria-label="Sports courts map"></div>
 
         <aside>
-          <h2 class="large-title">Canchas disponibles</h2>
+          <h2 class="large-title">Available Courts</h2>
 
           <p class="note">
-            Ubicaciones de demostración. Comprueba las direcciones
-            antes de desplazarte.
+            These are sample locations. Check the addresses
+            before traveling.
           </p>
 
           <div class="map-list">
@@ -489,7 +489,7 @@ function mapPage() {
                 </span>
                 <a class="text-link" target="_blank" rel="noopener"
                   href="https://www.google.com/maps/dir/?api=1&destination=${court.lat},${court.lng}">
-                  Cómo llegar →
+                  Get Directions →
                 </a>
               </div>
             `).join("")}
@@ -505,7 +505,7 @@ function initializeMap() {
 
   if (!element || typeof L === "undefined") {
     if (element) {
-      showToast("No se pudo cargar el mapa. Revisa tu conexión.");
+      showToast("The map could not be loaded. Check your connection.");
     }
     return;
   }
@@ -536,14 +536,14 @@ function initializeMap() {
   });
 }
 
-/* ENTRENADORES */
+/* COACHES */
 
 function coachesPage() {
   return `
     ${pageHero(
-      "MEJORA CADA DÍA",
-      "ENTRENA CON PROPÓSITO",
-      "Descubre perfiles de ejemplo y opciones para desarrollar tus habilidades."
+      "GET BETTER EVERY DAY",
+      "TRAIN WITH PURPOSE",
+      "Discover sample coach profiles and opportunities to develop your skills."
     )}
 
     <section class="page-content">
@@ -564,7 +564,7 @@ function coachesPage() {
 
                 <button class="btn btn-primary coach-contact"
                   data-coach="${index}">
-                  Consultar entrenador
+                  Contact Coach
                 </button>
               </div>
             </article>
@@ -572,8 +572,8 @@ function coachesPage() {
         </div>
 
         <p class="note">
-          Estos perfiles son demostrativos y no representan
-          necesariamente entrenadores disponibles.
+          These profiles are for demonstration purposes and do not
+          necessarily represent available coaches.
         </p>
       </div>
     </section>
@@ -586,11 +586,11 @@ function setupCoachButtons() {
       const coach = coaches[Number(button.dataset.coach)];
 
       const subject = encodeURIComponent(
-        `PRIME — Consulta para ${coach.name}`
+        `PRIME — Inquiry for ${coach.name}`
       );
 
       const body = encodeURIComponent(
-        `Hola, quisiera consultar información sobre ${coach.name}, especialista en ${coach.specialty}.`
+        `Hello, I would like to request information about ${coach.name}, who specializes in ${coach.specialty}.`
       );
 
       location.href =
@@ -599,40 +599,40 @@ function setupCoachButtons() {
   });
 }
 
-/* COMUNIDAD */
+/* COMMUNITY */
 
 function communityPage() {
   return `
     ${pageHero(
-      "MÁS QUE UN JUEGO",
-      "EL DEPORTE NOS CONECTA",
-      "PRIME busca conectar deportistas y crear oportunidades para crecer juntos."
+      "MORE THAN A GAME",
+      "SPORTS BRING US TOGETHER",
+      "PRIME aims to connect athletes and create opportunities to grow together."
     )}
 
     <section class="page-content">
       <div class="wrap">
         <div class="community-banner">
           <div>
-            <p class="eyebrow">CRECE CON PRIME</p>
-            <h2>EL SIGUIENTE NIVEL SE CONSTRUYE EN EQUIPO.</h2>
+            <p class="eyebrow">GROW WITH PRIME</p>
+            <h2>THE NEXT LEVEL IS BUILT TOGETHER.</h2>
             <p>
-              Comparte metas, conoce nuevas personas y descubre
-              oportunidades para disfrutar del deporte.
+              Share your goals, meet new people, and discover
+              opportunities to enjoy sports.
             </p>
             <a class="btn btn-primary" href="#acceso">
-              Únete a PRIME
+              Join PRIME
             </a>
           </div>
 
           <ul class="check-list">
             <li><i class="fa-solid fa-circle-check"></i>
-              <span>Descubre oportunidades deportivas.</span></li>
+              <span>Discover sports opportunities.</span></li>
             <li><i class="fa-solid fa-circle-check"></i>
-              <span>Comparte metas y experiencias.</span></li>
+              <span>Share goals and experiences.</span></li>
             <li><i class="fa-solid fa-circle-check"></i>
-              <span>Promueve el respeto y la competencia sana.</span></li>
+              <span>Promote respect and fair competition.</span></li>
             <li><i class="fa-solid fa-circle-check"></i>
-              <span>Aprende de otros deportistas.</span></li>
+              <span>Learn from other athletes.</span></li>
           </ul>
         </div>
 
@@ -641,24 +641,24 @@ function communityPage() {
             <div class="feature-icon">
               <i class="fa-solid fa-handshake-angle"></i>
             </div>
-            <h3>Colaboración</h3>
-            <p>Conecta con personas que comparten tus intereses deportivos.</p>
+            <h3>Collaboration</h3>
+            <p>Connect with people who share your sports interests.</p>
           </article>
 
           <article class="feature-card">
             <div class="feature-icon">
               <i class="fa-solid fa-calendar-check"></i>
             </div>
-            <h3>Organización</h3>
-            <p>Planifica tus actividades y mantente activo.</p>
+            <h3>Organization</h3>
+            <p>Plan your activities and stay active.</p>
           </article>
 
           <article class="feature-card">
             <div class="feature-icon">
               <i class="fa-solid fa-trophy"></i>
             </div>
-            <h3>Superación</h3>
-            <p>Establece objetivos y celebra tus avances.</p>
+            <h3>Personal Growth</h3>
+            <p>Set goals and celebrate your progress.</p>
           </article>
         </div>
       </div>
@@ -671,9 +671,9 @@ function communityPage() {
 function blogPage() {
   return `
     ${pageHero(
-      "IDEAS PARA TU PROGRESO",
+      "IDEAS FOR YOUR PROGRESS",
       "PRIME INSIGHTS",
-      "Consejos para entrenar, trabajar en equipo y disfrutar del deporte."
+      "Tips to help you train, work as a team, and enjoy sports."
     )}
 
     <section class="page-content">
@@ -695,7 +695,7 @@ function blogPage() {
 
                 <button class="text-link read-more"
                   data-article="${index}">
-                  Leer consejo →
+                  Read Tips →
                 </button>
 
                 <div class="article-details" hidden>
@@ -722,69 +722,72 @@ function setupArticles() {
     button.addEventListener("click", () => {
       const details = button.parentElement.querySelector(".article-details");
       details.hidden = !details.hidden;
-      button.textContent = details.hidden ? "Leer consejo →" : "Ocultar consejo ↑";
+
+      button.textContent = details.hidden
+        ? "Read Tips →"
+        : "Hide Tips ↑";
     });
   });
 }
 
-/* CONTACTO */
+/* CONTACT */
 
 function contactPage() {
   return `
     ${pageHero(
-      "HABLEMOS",
-      "¿TIENES UNA IDEA PARA PRIME?",
-      "Envíanos tus dudas, sugerencias o propuestas."
+      "LET'S TALK",
+      "HAVE AN IDEA FOR PRIME?",
+      "Send us your questions, suggestions, or proposals."
     )}
 
     <section class="page-content">
       <div class="wrap contact-layout">
         <aside class="info-panel">
-          <h2>Conectemos</h2>
+          <h2>Let's Connect</h2>
           <p>
-            Queremos conocer tus ideas para mejorar la experiencia deportiva.
+            We want to hear your ideas to improve the sports experience.
           </p>
 
           <div class="contact-details">
             <div>
               <i class="fa-solid fa-envelope"></i>
-              <span>Consultas y sugerencias</span>
+              <span>Questions and suggestions</span>
             </div>
             <div>
               <i class="fa-solid fa-globe"></i>
-              <span>PRIME · Panamá</span>
+              <span>PRIME · Panama</span>
             </div>
             <div>
               <i class="fa-solid fa-lightbulb"></i>
-              <span>Ideas y colaboraciones</span>
+              <span>Ideas and collaborations</span>
             </div>
           </div>
         </aside>
 
         <form id="contact-form" class="info-panel form-stack">
           <div class="field">
-            <label for="contact-name">Nombre</label>
+            <label for="contact-name">Name</label>
             <input id="contact-name" name="name" required>
           </div>
 
           <div class="field">
-            <label for="contact-email">Correo electrónico</label>
+            <label for="contact-email">Email Address</label>
             <input id="contact-email" name="email"
               type="email" required>
           </div>
 
           <div class="field">
-            <label for="contact-message">Mensaje</label>
+            <label for="contact-message">Message</label>
             <textarea id="contact-message" name="message" required></textarea>
           </div>
 
           <button class="btn btn-primary" type="submit">
-            Preparar mensaje
+            Prepare Message
             <i class="fa-solid fa-paper-plane"></i>
           </button>
 
           <small class="muted">
-            Este formulario prepara un correo; no lo envía a un servidor.
+            This form prepares an email; it does not send information to a server.
           </small>
         </form>
       </div>
@@ -798,106 +801,106 @@ function setupContactForm() {
 
     const data = new FormData(event.currentTarget);
 
-    const subject = encodeURIComponent("Mensaje desde PRIME");
+    const subject = encodeURIComponent("Message from PRIME");
 
     const body = encodeURIComponent(
-      `Nombre: ${data.get("name")}\n` +
-      `Correo: ${data.get("email")}\n\n` +
-      `Mensaje:\n${data.get("message")}`
+      `Name: ${data.get("name")}\n` +
+      `Email: ${data.get("email")}\n\n` +
+      `Message:\n${data.get("message")}`
     );
 
     location.href = `mailto:?subject=${subject}&body=${body}`;
   });
 }
 
-/* ACCESO Y REGISTRO */
+/* LOGIN AND REGISTRATION */
 
 function accessPage() {
   return `
     ${pageHero(
-      "TU EXPERIENCIA PRIME",
-      "ENTRA EN JUEGO",
-      "Crea una cuenta o inicia sesión para acceder a las opciones de usuario."
+      "YOUR PRIME EXPERIENCE",
+      "GET IN THE GAME",
+      "Create an account or sign in to access user features."
     )}
 
     <section class="page-content">
       <div class="wrap auth-layout">
         <aside class="info-panel">
-          <h2>Tu cuenta PRIME</h2>
+          <h2>Your PRIME Account</h2>
           <p>
-            Accede a tu perfil y descubre las opciones de la plataforma.
+            Access your profile and explore the platform's features.
           </p>
 
           <ul class="check-list">
             <li><i class="fa-solid fa-check"></i>
-              <span>Consulta canchas.</span></li>
+              <span>Find courts.</span></li>
             <li><i class="fa-solid fa-check"></i>
-              <span>Explora entrenadores.</span></li>
+              <span>Explore coaches.</span></li>
             <li><i class="fa-solid fa-check"></i>
-              <span>Conoce la comunidad.</span></li>
+              <span>Discover the community.</span></li>
           </ul>
 
           <p class="note">
-            Para activar el inicio de sesión real, configura Firebase
-            en el código JavaScript.
+            To enable real sign-in, configure Firebase
+            in the JavaScript file.
           </p>
         </aside>
 
         <section class="auth-card">
           <div class="auth-tabs">
             <button class="auth-tab active" id="login-tab" type="button">
-              Iniciar sesión
+              Sign In
             </button>
             <button class="auth-tab" id="register-tab" type="button">
-              Crear cuenta
+              Create Account
             </button>
           </div>
 
           <form id="login-form" class="form-stack">
             <div class="field">
-              <label for="login-email">Correo electrónico</label>
+              <label for="login-email">Email Address</label>
               <input id="login-email" name="email"
                 type="email" autocomplete="email" required>
             </div>
 
             <div class="field">
-              <label for="login-password">Contraseña</label>
+              <label for="login-password">Password</label>
               <input id="login-password" name="password"
                 type="password" autocomplete="current-password"
                 minlength="6" required>
             </div>
 
             <button class="btn btn-primary" type="submit">
-              Iniciar sesión
+              Sign In
             </button>
           </form>
 
           <form id="register-form" class="form-stack" hidden>
             <div class="field">
-              <label for="register-name">Nombre</label>
+              <label for="register-name">Name</label>
               <input id="register-name" name="name"
                 autocomplete="name" required>
             </div>
 
             <div class="field">
-              <label for="register-email">Correo electrónico</label>
+              <label for="register-email">Email Address</label>
               <input id="register-email" name="email"
                 type="email" autocomplete="email" required>
             </div>
 
             <div class="field">
-              <label for="register-password">Contraseña</label>
+              <label for="register-password">Password</label>
               <input id="register-password" name="password"
                 type="password" autocomplete="new-password"
                 minlength="6" required>
             </div>
 
             <button class="btn btn-primary" type="submit">
-              Crear cuenta
+              Create Account
             </button>
           </form>
 
-          <div class="separator">O continúa con</div>
+          <div class="separator">Or continue with</div>
 
           <div class="social-buttons">
             <button class="social-button" type="button"
@@ -942,7 +945,7 @@ function setupAuthForms() {
     event.preventDefault();
 
     if (!auth) {
-      showToast("Configura Firebase para activar el acceso.");
+      showToast("Configure Firebase to enable sign-in.");
       return;
     }
 
@@ -956,7 +959,7 @@ function setupAuthForms() {
 
       location.hash = "#perfil";
     } catch (error) {
-      showToast("No se pudo iniciar sesión. Revisa tus datos.");
+      showToast("Sign-in failed. Please check your details.");
       console.error(error);
     }
   });
@@ -965,7 +968,7 @@ function setupAuthForms() {
     event.preventDefault();
 
     if (!auth) {
-      showToast("Configura Firebase para activar el registro.");
+      showToast("Configure Firebase to enable registration.");
       return;
     }
 
@@ -984,7 +987,7 @@ function setupAuthForms() {
       currentUser = credential.user;
       location.hash = "#perfil";
     } catch (error) {
-      showToast("No se pudo crear la cuenta. Revisa los datos.");
+      showToast("Account creation failed. Please check your details.");
       console.error(error);
     }
   });
@@ -998,7 +1001,7 @@ function setupAuthForms() {
 
 async function socialLogin(providerName) {
   if (!auth) {
-    showToast("Configura Firebase para activar el acceso.");
+    showToast("Configure Firebase to enable sign-in.");
     return;
   }
 
@@ -1016,26 +1019,26 @@ async function socialLogin(providerName) {
     await auth.signInWithPopup(provider);
     location.hash = "#perfil";
   } catch (error) {
-    showToast("No se pudo completar el acceso social.");
+    showToast("Social sign-in could not be completed.");
     console.error(error);
   }
 }
 
-/* PERFIL */
+/* PROFILE */
 
 function profilePage() {
   if (!currentUser) {
     return `
       ${pageHero(
-        "TU CUENTA",
-        "MI PERFIL PRIME",
-        "Inicia sesión para acceder a tu perfil."
+        "YOUR ACCOUNT",
+        "MY PRIME PROFILE",
+        "Sign in to access your profile."
       )}
 
       <section class="page-content">
         <div class="wrap info-panel">
-          <p>Necesitas iniciar sesión para ver tu perfil.</p>
-          <a class="btn btn-primary" href="#acceso">Mi cuenta</a>
+          <p>You need to sign in to view your profile.</p>
+          <a class="btn btn-primary" href="#acceso">My Account</a>
         </div>
       </section>
     `;
@@ -1045,9 +1048,9 @@ function profilePage() {
 
   return `
     ${pageHero(
-      "TU CUENTA",
-      "MI PERFIL PRIME",
-      "Consulta la información de tu sesión."
+      "YOUR ACCOUNT",
+      "MY PRIME PROFILE",
+      "View your account information."
     )}
 
     <section class="page-content">
@@ -1058,19 +1061,19 @@ function profilePage() {
           </div>
 
           <h2>${escapeHTML(name)}</h2>
-          <p>Correo: ${escapeHTML(currentUser.email || "")}</p>
+          <p>Email: ${escapeHTML(currentUser.email || "")}</p>
 
           <button id="logout-button" class="btn btn-primary">
-            Cerrar sesión
+            Sign Out
           </button>
         </article>
 
         <aside class="info-panel">
-          <h2>Continúa explorando</h2>
-          <p>Descubre espacios deportivos y opciones de entrenamiento.</p>
-          <a class="text-link" href="#canchas">Explorar canchas →</a>
+          <h2>Keep Exploring</h2>
+          <p>Discover sports facilities and training opportunities.</p>
+          <a class="text-link" href="#canchas">Explore Courts →</a>
           <br>
-          <a class="text-link" href="#entrenadores">Ver entrenadores →</a>
+          <a class="text-link" href="#entrenadores">View Coaches →</a>
         </aside>
       </div>
     </section>
@@ -1085,11 +1088,11 @@ function setupLogout() {
 
     currentUser = null;
     location.hash = "#inicio";
-    showToast("Has cerrado sesión.");
+    showToast("You have signed out.");
   });
 }
 
-/* NAVEGACIÓN ENTRE PÁGINAS */
+/* PAGE NAVIGATION */
 
 function currentRoute() {
   const route = (location.hash || "#inicio").slice(1).split("?")[0];
@@ -1151,7 +1154,7 @@ function renderRoute() {
   if (route === "perfil") setupLogout();
 }
 
-/* TEMA CLARO Y OSCURO */
+/* LIGHT AND DARK THEME */
 
 function applyTheme(theme) {
   const selectedTheme = theme === "light" ? "light" : "dark";
@@ -1167,27 +1170,10 @@ function applyTheme(theme) {
       : '<i class="fa-solid fa-moon"></i>';
 
     button.title = selectedTheme === "dark"
-      ? "Activar modo claro"
-      : "Activar modo oscuro";
-  }
-}
+      ? "Switch to light mode"
+      : "Switch to dark mode";
 
-/* IDIOMA */
-
-function applyLanguage(language) {
-  const select = $("#language-select");
-
-  if (select) {
-    select.value = language;
-  }
-
-  document.documentElement.lang = language;
-  localStorage.setItem("prime-language", language);
-
-  if (language !== "es") {
-    showToast(
-      "La traducción completa de esta versión está disponible en español."
-    );
+    button.setAttribute("aria-label", button.title);
   }
 }
 
@@ -1218,7 +1204,7 @@ function initializeFirebase() {
 
       if (accountLink) {
         accountLink.href = user ? "#perfil" : "#acceso";
-        accountLink.textContent = user ? "Mi perfil" : "Mi cuenta";
+        accountLink.textContent = user ? "My Profile" : "My Account";
       }
 
       if (currentRoute() === "perfil") {
@@ -1226,11 +1212,11 @@ function initializeFirebase() {
       }
     });
   } catch (error) {
-    console.error("Error de Firebase:", error);
+    console.error("Firebase error:", error);
   }
 }
 
-/* INICIALIZACIÓN */
+/* INITIALIZATION */
 
 function initialize() {
   const year = $("#current-year");
@@ -1240,10 +1226,8 @@ function initialize() {
   }
 
   const savedTheme = localStorage.getItem("prime-theme") || "dark";
-  const savedLanguage = localStorage.getItem("prime-language") || "es";
 
   applyTheme(savedTheme);
-  applyLanguage(savedLanguage);
   initializeFirebase();
 
   $("#theme-toggle")?.addEventListener("click", () => {
@@ -1251,10 +1235,6 @@ function initialize() {
       document.documentElement.dataset.theme === "dark" ? "light" : "dark";
 
     applyTheme(nextTheme);
-  });
-
-  $("#language-select")?.addEventListener("change", event => {
-    applyLanguage(event.target.value);
   });
 
   const menuToggle = $("#menu-toggle");
